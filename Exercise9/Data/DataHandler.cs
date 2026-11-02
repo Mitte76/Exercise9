@@ -4,13 +4,14 @@ using System.IO;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Exercise6.Facilities;
+using Exercise9.Facilities;
+using Exercise9.Vehicles;
 
-namespace Exercise6.Data
+namespace Exercise9.Data
 {
     internal static class DataHandler
     {
-        internal static async Task<string?> WriteToDatabase(List<Garage> facilities)
+        internal static async Task<string?> WriteToDatabase(List<Garage<Vehicle>> facilities)
         {
             if (facilities.Count == 0)
             {
@@ -86,7 +87,7 @@ namespace Exercise6.Data
         }
 
         internal static async Task<string?> ReadFromDatabase(
-            List<Garage> facilities,
+            List<Garage<Vehicle>> facilities,
             string filename
         )
         {
@@ -101,8 +102,8 @@ namespace Exercise6.Data
             await using FileStream stream = File.OpenRead(path);
             try
             {
-                List<Garage>? loadedFacilities = await JsonSerializer.DeserializeAsync<
-                    List<Garage>
+                List<Garage<Vehicle>>? loadedFacilities = await JsonSerializer.DeserializeAsync<
+                    List<Garage<Vehicle>>
                 >(stream);
 
                 if (loadedFacilities != null)

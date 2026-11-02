@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
-using Exercise6.Facilities;
+using Exercise9.Facilities;
 
-namespace Exercise6.Vehicles
+namespace Exercise9.Vehicles
 {
     [JsonPolymorphic(TypeDiscriminatorPropertyName = "type")]
     [JsonDerivedType(typeof(Airplane), "Airplane")]

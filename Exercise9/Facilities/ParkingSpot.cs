@@ -1,7 +1,7 @@
 ﻿using System.Text.Json.Serialization;
-using Exercise6.Vehicles;
+using Exercise9.Vehicles;
 
-namespace Exercise6.Facilities
+namespace Exercise9.Facilities
 {
     public class ParkingSpot(int id)
     {

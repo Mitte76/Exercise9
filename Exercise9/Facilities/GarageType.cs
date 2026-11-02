@@ -1,4 +1,4 @@
-﻿namespace Exercise6.Facilities
+﻿namespace Exercise9.Facilities
 {
     public enum GarageType
     {

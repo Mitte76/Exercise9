@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Exercise6.Facilities;
-using Exercise6.Vehicles;
+using Exercise9.Facilities;
+using Exercise9.Vehicles;
 
-namespace Exercise6.Services
+namespace Exercise9.Services
 {
     internal static class GaragePopulationService
     {
@@ -37,7 +37,10 @@ namespace Exercise6.Services
         private static readonly int[] AirplaneEngineCounts = [1, 2, 4];
         private static readonly FuelType[] FuelTypes = [FuelType.Diesel, FuelType.Gasoline];
 
-        internal static string PopulateGarage(Garage garage, List<Garage> facilities)
+        internal static string PopulateGarage(
+            Garage<Vehicle> garage,
+            List<Garage<Vehicle>> facilities
+        )
         {
             if (garage.VehicleTypes.Length == 0)
                 throw new InvalidOperationException(
@@ -63,7 +66,7 @@ namespace Exercise6.Services
                 : $"Added {addedVehicles} vehicles to {garage.Name}.";
         }
 
-        private static Vehicle CreateVehicle(VehicleType type, List<Garage> facilities)
+        private static Vehicle CreateVehicle(VehicleType type, List<Garage<Vehicle>> facilities)
         {
             string brand = GetRandomBrand(type);
             string color = PickRandom(Colors);

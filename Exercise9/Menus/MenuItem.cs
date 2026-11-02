@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace Exercise6.Menus
+namespace Exercise9.Menus
 {
     public class MenuItem(
         string text,

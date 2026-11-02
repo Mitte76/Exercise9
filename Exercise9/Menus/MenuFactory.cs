@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Exercise6.Data;
-using Exercise6.Facilities;
-using Exercise6.Services;
-using Exercise6.Vehicles;
+using Exercise9.Data;
+using Exercise9.Facilities;
+using Exercise9.Services;
+using Exercise9.Vehicles;
 
-namespace Exercise6.Menus
+namespace Exercise9.Menus
 {
-    internal class MenuFactory(List<Garage> facilities)
+    internal class MenuFactory(List<Garage<Vehicle>> facilities)
     {
-        private readonly List<Garage> _facilities = facilities ?? [];
+        private readonly List<Garage<Vehicle>> _facilities = facilities ?? [];
 
         public Menu CreateMainMenu()
         {
@@ -41,7 +41,7 @@ namespace Exercise6.Menus
             return [.. list];
         }
 
-        private Menu FacilityMenu(Garage garage)
+        private Menu FacilityMenu(Garage<Vehicle> garage)
         {
             return new Menu(
                 () => $"{garage.GetType().Name}: {garage.Name}",
@@ -49,7 +49,7 @@ namespace Exercise6.Menus
             );
         }
 
-        private MenuItem[] GarageSubMenus(Garage garage)
+        private MenuItem[] GarageSubMenus(Garage<Vehicle> garage)
         {
             string vehicleTypes = string.Join("/", garage.VehicleTypes);
             MenuItem parkVehicle =
@@ -76,7 +76,7 @@ namespace Exercise6.Menus
             ];
         }
 
-        private static string PrintVehicleTypeCounts(Garage garage)
+        private static string PrintVehicleTypeCounts(Garage<Vehicle> garage)
         {
             StringBuilder result = new();
 
@@ -88,7 +88,7 @@ namespace Exercise6.Menus
             return result.ToString().TrimEnd();
         }
 
-        private Menu GetVehicle(Garage garage)
+        private Menu GetVehicle(Garage<Vehicle> garage)
         {
             return new Menu(
                 () => "Find Vehicle",
@@ -105,7 +105,7 @@ namespace Exercise6.Menus
             );
         }
 
-        private Menu SearchVehicleMenu(Garage garage)
+        private Menu SearchVehicleMenu(Garage<Vehicle> garage)
         {
             return new Menu(
                 () => "Search Vehicle",
@@ -128,7 +128,7 @@ namespace Exercise6.Menus
             );
         }
 
-        private Menu? SearchByPlate(Garage garage)
+        private Menu? SearchByPlate(Garage<Vehicle> garage)
         {
             Console.WriteLine("Enter license plate. Leave empty to cancel.");
 
@@ -152,7 +152,7 @@ namespace Exercise6.Menus
             return new Menu(() => "Found Vehicles", () => SearchResults(garage, licensePlate));
         }
 
-        private MenuItem[] SearchResults(Garage garage, string licensePlate)
+        private MenuItem[] SearchResults(Garage<Vehicle> garage, string licensePlate)
         {
             var vehicles = new List<MenuItem>();
 
@@ -197,7 +197,7 @@ namespace Exercise6.Menus
             return [.. vehicles];
         }
 
-        private Menu SearchByCriteria(Garage garage)
+        private Menu SearchByCriteria(Garage<Vehicle> garage)
         {
             Dictionary<string, string> criterias = new(StringComparer.OrdinalIgnoreCase);
 
@@ -342,7 +342,7 @@ namespace Exercise6.Menus
         }
 
         private MenuItem[] SearchByCriteriaResults(
-            Garage garage,
+            Garage<Vehicle> garage,
             Dictionary<string, string> criteria
         )
         {
@@ -424,7 +424,7 @@ namespace Exercise6.Menus
             return [.. results];
         }
 
-        private Menu GetAllVehicles(Garage garage)
+        private Menu GetAllVehicles(Garage<Vehicle> garage)
         {
             int currentPage = 0;
             int totalPages = 1;
@@ -489,7 +489,7 @@ namespace Exercise6.Menus
             );
         }
 
-        private Menu ParkVehicle(Garage garage)
+        private Menu ParkVehicle(Garage<Vehicle> garage)
         {
             return new Menu(
                 () => "Select vehicle type",

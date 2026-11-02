@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Exercise6.Vehicles
+namespace Exercise9.Vehicles
 {
     internal class Airplane(string brand, string color, int numberOfEngines) : Vehicle(brand, color)
     {

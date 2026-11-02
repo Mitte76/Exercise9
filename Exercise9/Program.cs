@@ -1,18 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Exercise6.Facilities;
-using Exercise6.Menus;
+using Exercise9.Services;
+using Exercise9.UI;
 
-namespace Exercise6
+namespace Exercise9
 {
     internal class Program
     {
-        private static readonly List<Garage> facilities = [];
-
         static async Task Main()
         {
-            Menu menu = new MenuFactory(facilities).CreateMainMenu();
-            await menu.ShowMenu();
+            GarageHandler garageHandler = new();
+            MainMenu mainMenu = new(garageHandler: garageHandler);
+
+            await mainMenu.Show().ShowMenu();
         }
     }
 }

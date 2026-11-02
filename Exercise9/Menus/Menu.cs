@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Exercise6.Menus
+namespace Exercise9.Menus
 {
     public class Menu(
         Func<string> menuName,
