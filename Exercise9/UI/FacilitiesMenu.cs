@@ -65,7 +65,24 @@ namespace Exercise9.UI
                 if (vehicleTypes == null)
                     return null;
 
-                return garageHandler.AddGarage(name.Trim(), capacity, vehicleTypes);
+                GarageSummary garage = garageHandler.AddGarage(name.Trim(), capacity, vehicleTypes);
+                while (true)
+                {
+                    Console.Write("Populate the garage with random vehicles now? (Y/N): ");
+                    string? populate = Console.ReadLine();
+                    if (populate == null || populate.Trim().Equals("N", StringComparison.OrdinalIgnoreCase))
+                        break;
+
+                    if (populate.Trim().Equals("Y", StringComparison.OrdinalIgnoreCase))
+                    {
+                        garageHandler.PopulateGarage(garage.Id);
+                        break;
+                    }
+
+                    Console.WriteLine("Enter Y to populate the garage or N to leave it empty.");
+                }
+
+                return garageHandler.GetGarageSummary(garage.Id);
             }
         }
 

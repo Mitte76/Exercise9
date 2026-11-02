@@ -9,7 +9,8 @@ namespace Exercise9.Menus
         Menu<T>? submenu = null,
         Func<string?>? action = null,
         Func<Task<string?>>? taskAction = null,
-        Func<T?>? valueFactory = null
+        Func<T?>? valueFactory = null,
+        bool isEnabled = true
     )
         where T : class
     {
@@ -19,5 +20,6 @@ namespace Exercise9.Menus
         public Func<T?>? ValueFactory { get; } = valueFactory;
         public Func<string?>? Action { get; } = action;
         public Func<Task<string?>>? TaskAction { get; } = taskAction;
+        public bool IsEnabled { get; } = isEnabled;
     }
 }

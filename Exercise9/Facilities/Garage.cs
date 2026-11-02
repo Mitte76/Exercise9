@@ -11,7 +11,7 @@ namespace Exercise9.Facilities
     {
         public const int MaximumCapacity = 100_000;
 
-        private readonly Vehicle?[] vehicles;
+        private readonly T?[] vehicles;
 
         public Garage(string name, int capacity, VehicleType[] vehicleTypes)
         {
@@ -26,15 +26,16 @@ namespace Exercise9.Facilities
             Name = name;
             Capacity = capacity;
             VehicleTypes = Array.AsReadOnly(vehicleTypes.ToArray());
-            vehicles = new Vehicle?[capacity];
+            vehicles = new T?[capacity];
         }
 
         public string Name { get; }
         public int Capacity { get; }
         public IReadOnlyList<VehicleType> VehicleTypes { get; }
 
-        public bool TryParkVehicle(Vehicle vehicle)
+        public bool TryParkVehicle(T vehicle)
         {
+            ArgumentNullException.ThrowIfNull(vehicle);
             if (!Accepts(vehicle) || HasDuplicateRegistrationNumber(vehicle))
                 return false;
 
@@ -46,9 +47,9 @@ namespace Exercise9.Facilities
             return true;
         }
 
-        internal Vehicle?[] GetVehicleSlots() => [.. vehicles];
+        internal T?[] GetVehicleSlots() => [.. vehicles];
 
-        internal bool TryParkVehicleAt(int position, Vehicle vehicle)
+        internal bool TryParkVehicleAt(int position, T vehicle)
         {
             int index = position - 1;
             if (
@@ -64,11 +65,8 @@ namespace Exercise9.Facilities
             return true;
         }
 
-        private bool Accepts(Vehicle vehicle)
+        private bool Accepts(T vehicle)
         {
-            if (vehicle is not T)
-                return false;
-
             VehicleType? vehicleType = vehicle switch
             {
                 Airplane => VehicleType.Airplane,
@@ -82,11 +80,11 @@ namespace Exercise9.Facilities
             return vehicleType != null && VehicleTypes.Contains(vehicleType.Value);
         }
 
-        private bool HasDuplicateRegistrationNumber(Vehicle vehicle, int ignoredPosition = -1)
+        private bool HasDuplicateRegistrationNumber(T vehicle, int ignoredPosition = -1)
         {
             for (int index = 0; index < vehicles.Length; index++)
             {
-                Vehicle? parkedVehicle = vehicles[index];
+                T? parkedVehicle = vehicles[index];
                 if (
                     index != ignoredPosition
                     && parkedVehicle != null
@@ -124,8 +122,9 @@ namespace Exercise9.Facilities
             return true;
         }
 
-        public bool TryReplaceVehicle(int position, Vehicle vehicle)
+        public bool TryReplaceVehicle(int position, T vehicle)
         {
+            ArgumentNullException.ThrowIfNull(vehicle);
             int index = position - 1;
             if (
                 index < 0
@@ -152,10 +151,10 @@ namespace Exercise9.Facilities
 
         public IEnumerator<T> GetEnumerator()
         {
-            foreach (Vehicle? vehicle in vehicles)
+            foreach (T? vehicle in vehicles)
             {
-                if (vehicle is T typedVehicle)
-                    yield return typedVehicle;
+                if (vehicle is not null)
+                    yield return vehicle;
             }
         }
 

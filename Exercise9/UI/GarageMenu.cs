@@ -124,17 +124,17 @@ namespace Exercise9.UI
                             );
                         }
 
-                        if (currentPage > 0)
-                            items.Add(
-                                new MenuItem<ParkedVehicleSummary>(
-                                    "Previous page",
-                                    action: () =>
-                                    {
-                                        currentPage--;
-                                        return null;
-                                    }
-                                )
-                            );
+                        items.Add(
+                            new MenuItem<ParkedVehicleSummary>(
+                                "Previous page",
+                                action: () =>
+                                {
+                                    currentPage--;
+                                    return null;
+                                },
+                                isEnabled: currentPage > 0
+                            )
+                        );
 
                         if (currentPage < totalPages - 1)
                             items.Add(

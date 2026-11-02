@@ -53,6 +53,15 @@ namespace Exercise9.Menus
                 if (items.Length == 0)
                     return null;
 
+                if (
+                    selectedIndex < 0
+                    || selectedIndex >= items.Length
+                    || !items[selectedIndex].IsEnabled
+                )
+                    selectedIndex = FindEnabledIndex(items, Math.Max(selectedIndex, 0), 1);
+                if (selectedIndex < 0)
+                    return null;
+
                 ShowMainMenu(items, selectedIndex, _message, _extra?.Invoke());
                 _message = null;
 
@@ -62,6 +71,12 @@ namespace Exercise9.Menus
                         return null;
 
                     MenuItem<T> selected = items[selectedIndex];
+                    if (!selected.IsEnabled)
+                    {
+                        _message = "This menu option is currently unavailable.";
+                        continue;
+                    }
+
                     Menu<T>? submenu = selected.Submenu;
 
                     if (submenu != null)
@@ -139,22 +154,40 @@ namespace Exercise9.Menus
                 {
                     bool selected = i == selectedIndex;
                     int menuNumber = i + 1;
-                    PrintMenuItem(menuNumber, items[i].Text, selected);
+                    PrintMenuItem(menuNumber, items[i].Text, selected, items[i].IsEnabled);
                 }
 
             Console.Write(currentInput);
         }
 
-        static void PrintMenuItem(int number, string text, bool selected)
+        static void PrintMenuItem(int number, string text, bool selected, bool isEnabled)
         {
-            Console.Write($"{number}.[");
+            if (!isEnabled)
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+            else if (selected)
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.BackgroundColor = ConsoleColor.DarkBlue;
+            }
+            else
+                Console.ForegroundColor = ConsoleColor.Gray;
 
-            Console.ForegroundColor = selected ? ConsoleColor.Green : ConsoleColor.DarkGray;
-
-            Console.Write(selected ? "#" : " ");
-
+            Console.Write($"{number}.[{(selected ? "#" : " ")}] ");
+            Console.WriteLine(text);
             Console.ResetColor();
-            Console.WriteLine($"] {text}");
+        }
+
+        private static int FindEnabledIndex(MenuItem<T>[] items, int startIndex, int direction)
+        {
+            for (int step = 0; step < items.Length; step++)
+            {
+                int index =
+                    ((startIndex + direction * step) % items.Length + items.Length) % items.Length;
+                if (items[index].IsEnabled)
+                    return index;
+            }
+
+            return -1;
         }
 
         private bool HandleInput(
@@ -169,15 +202,12 @@ namespace Exercise9.Menus
             switch (input.Key)
             {
                 case ConsoleKey.DownArrow:
-                    selectedIndex++;
-                    selectedIndex = (currentIndex + 1) % items.Length;
+                    selectedIndex = FindEnabledIndex(items, currentIndex + 1, 1);
                     currentInput = "";
                     return false;
                 case ConsoleKey.UpArrow:
-                    selectedIndex--;
-                    selectedIndex = (currentIndex - 1 + items.Length) % items.Length;
+                    selectedIndex = FindEnabledIndex(items, currentIndex - 1, -1);
                     currentInput = "";
-
                     return false;
                 case ConsoleKey.Backspace:
                     if (!string.IsNullOrEmpty(currentInput))
@@ -185,21 +215,42 @@ namespace Exercise9.Menus
                     return false;
 
                 case ConsoleKey.Enter:
-                    if (currentInput == "0" && !_isMainMenu)
+                    if (currentInput == "0")
                     {
-                        selectedIndex = -1;
-                        return true;
+                        if (!_isMainMenu)
+                        {
+                            selectedIndex = -1;
+                            return true;
+                        }
+
+                        int lastIndex = items.Length - 1;
+                        if (items[lastIndex].IsEnabled)
+                        {
+                            selectedIndex = lastIndex;
+                            currentInput = "";
+                            return true;
+                        }
+
+                        currentInput = "";
+                        return false;
                     }
 
-                    if (
-                        currentInput != ""
-                        && int.TryParse(currentInput, out int currentNumber)
-                        && currentNumber >= 1
-                        && currentNumber <= items.Length
-                    )
+                    if (currentInput != "")
                     {
-                        selectedIndex = currentNumber - 1;
+                        if (
+                            int.TryParse(currentInput, out int currentNumber)
+                            && currentNumber >= 1
+                            && currentNumber <= items.Length
+                            && items[currentNumber - 1].IsEnabled
+                        )
+                        {
+                            selectedIndex = currentNumber - 1;
+                            currentInput = "";
+                            return true;
+                        }
+
                         currentInput = "";
+                        return false;
                     }
 
                     return true;
@@ -218,11 +269,15 @@ namespace Exercise9.Menus
                     {
                         if (current == 0)
                         {
-                            if (_isMainMenu)
-                                selectedIndex = items.Length - 1;
+                            int lastIndex = items.Length - 1;
+                            if (_isMainMenu && items[lastIndex].IsEnabled)
+                                selectedIndex = lastIndex;
                         }
                         else if (current > 0 && current <= items.Length)
-                            selectedIndex = current - 1;
+                        {
+                            if (items[current - 1].IsEnabled)
+                                selectedIndex = current - 1;
+                        }
                         else
                         {
                             selectedIndex = 0;

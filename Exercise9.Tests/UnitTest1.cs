@@ -20,6 +20,20 @@ public class GarageTests
     }
 
     [Fact]
+    public void TryParkVehicle_WhenGarageUsesConcreteVehicleType_StoresAndReturnsThatType()
+    {
+        Garage<Car> garage = new("Car garage", 1, [VehicleType.Car]);
+        Car car = CreateCar("ABC123");
+
+        bool parked = garage.TryParkVehicle(car);
+
+        Assert.True(parked);
+        Car storedCar = Assert.Single(garage);
+        Assert.Same(car, storedCar);
+        Assert.Same(car, garage.GetVehicleSlots()[0]);
+    }
+
+    [Fact]
     public void TryParkVehicle_WhenGarageIsFull_ReturnsFalseAndKeepsExistingVehicle()
     {
         Garage<Vehicle> garage = CreateGarage(1, VehicleType.Car);
