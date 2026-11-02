@@ -1,45 +1,43 @@
-﻿using Exercise9.Facilities;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Exercise9.Menus;
 using Exercise9.Services;
-using Exercise9.Vehicles;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Exercise9.UI
 {
     internal class MainMenu()
     {
-        public Task<Garage<Vehicle>?> ShowAsync(GarageHandler garageHandler)
+        public Task<GarageSummary?> Show(IGarageHandler garageHandler)
         {
-            return new Menu<Garage<Vehicle>>(
+            return new Menu<GarageSummary>(
                 () => "Main Menu",
                 () => GetMainMenuItems(garageHandler),
                 isMainMenu: true
             ).ShowMenu();
         }
 
-        private MenuItem<Garage<Vehicle>>[] GetMainMenuItems(GarageHandler garageHandler)
+        private MenuItem<GarageSummary>[] GetMainMenuItems(IGarageHandler garageHandler)
         {
-            var list = new List<MenuItem<Garage<Vehicle>>>();
+            List<MenuItem<GarageSummary>> items = [];
 
-            if (garageHandler.GarageCount() > 0)
+            if (garageHandler.GarageCount > 0)
             {
-                list.Add(
-                    new MenuItem<Garage<Vehicle>>(
+                items.Add(
+                    new MenuItem<GarageSummary>(
                         "Open Facility",
-                        submenu: FacilityMenu.OpenFacility(garageHandler)
+                        submenu: FacilitiesMenu.OpenFacility(garageHandler)
                     )
                 );
             }
 
-            list.Add(
-                new MenuItem<Garage<Vehicle>>(
+            items.Add(
+                new MenuItem<GarageSummary>(
                     "Add Facility",
-                    submenu: FacilityMenu.CreateFacility(garageHandler)
+                    submenu: FacilitiesMenu.CreateFacility(garageHandler)
                 )
             );
-            list.Add(new MenuItem<Garage<Vehicle>>("Exit"));
-            return [.. list];
+            items.Add(new MenuItem<GarageSummary>("Exit"));
+            return [.. items];
         }
     }
 }

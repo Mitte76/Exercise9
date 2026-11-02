@@ -70,76 +70,29 @@ namespace Exercise9.Vehicles
             {
                 foreach (Garage<Vehicle> facility in facilities)
                 {
-                    //foreach (ParkingSpot spot in facility.ParkingSpots)
-                    //{
-                    //    if (
-                    //        spot.Vehicle is null
-                    //        || ReferenceEquals(spot.Vehicle, vehicleBeingUpdated)
-                    //    )
-                    //        continue;
+                    foreach (Vehicle parkedVehicle in facility)
+                    {
+                        if (ReferenceEquals(parkedVehicle, vehicleBeingUpdated))
+                            continue;
 
-                    //    string? existing = spot.Vehicle switch
-                    //    {
-                    //        Car car => car.LicensePlateNumber,
-                    //        Bus bus => bus.LicensePlateNumber,
-                    //        Motorcycle motorcycle => motorcycle.LicensePlateNumber,
-                    //        _ => null,
-                    //    };
+                        string? existing = parkedVehicle switch
+                        {
+                            Car car => car.LicensePlateNumber,
+                            Bus bus => bus.LicensePlateNumber,
+                            Motorcycle motorcycle => motorcycle.LicensePlateNumber,
+                            _ => null,
+                        };
 
-                    //    if (string.Equals(existing, normalized, StringComparison.OrdinalIgnoreCase))
-                    //        throw new ArgumentException(
-                    //            "A vehicle with that license plate already exists"
-                    //        );
-                    //}
+                        if (string.Equals(existing, normalized, StringComparison.OrdinalIgnoreCase))
+                            throw new ArgumentException(
+                                "A vehicle with that license plate already exists"
+                            );
+                    }
                 }
             }
 
             return normalized;
         }
 
-        //public static string ValidateLicensePlateNumber(string registratíonNumber)
-        //{
-        //    string pattern = @"^[A-HJ-PR-UW-Z]{3}\s?[0-9]{2}[A-HJ-PR-UW-Z0-9]$";
-        //    Regex regex = new(pattern, RegexOptions.IgnoreCase);
-
-        //    if (string.IsNullOrEmpty(registratíonNumber) || !regex.IsMatch(registratíonNumber))
-        //        throw new ArgumentException("Licence plate number is not valid");
-
-        //    return registratíonNumber.ToUpper();
-        //}
-
-        //internal static string ValidateLicensePlateNumber(
-        //    string registratíonNumber,
-        //    List<Garage> facilities
-        //)
-        //{
-        //    string validatedNumber = ValidateLicensePlateNumber(registratíonNumber);
-
-        //    foreach (Garage facility in facilities)
-        //    {
-        //        foreach (ParkingSpot parkingSpot in facility.ParkingSpots)
-        //        {
-        //            string? existingNumber = parkingSpot.Vehicle switch
-        //            {
-        //                Car car => car.LicensePlateNumber,
-        //                Bus bus => bus.LicensePlateNumber,
-        //                Motorcycle motorcycle => motorcycle.LicensePlateNumber,
-        //                _ => null,
-        //            };
-
-        //            if (
-        //                existingNumber?.Equals(validatedNumber, StringComparison.OrdinalIgnoreCase)
-        //                == true
-        //            )
-        //            {
-        //                throw new ArgumentException(
-        //                    "A vehicle with that license plate already exists"
-        //                );
-        //            }
-        //        }
-        //    }
-
-        //    return validatedNumber;
-        //}
     }
 }

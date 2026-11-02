@@ -1,38 +1,38 @@
 ﻿using System;
 using System.Linq;
-using Exercise9.Facilities;
 using Exercise9.Menus;
 using Exercise9.Services;
 using Exercise9.Vehicles;
 
 namespace Exercise9.UI
 {
-    internal static class FacilityMenu
+    internal static class FacilitiesMenu
     {
-        public static Menu<Garage<Vehicle>> OpenFacility(GarageHandler garageHandler)
+        public static Menu<GarageSummary> OpenFacility(IGarageHandler garageHandler)
         {
-            return Menu<Garage<Vehicle>>.CreateSelectionMenu(
+            return Menu<GarageSummary>.CreateSelectionMenu(
                 () => "Available Facilities",
                 garageHandler.GetGarages(),
-                garage => $"{garage.Name} ({garage.GetAllowedVehicles()})"
+                garage => $"{garage.Name} ({string.Join(", ", garage.VehicleTypes)})"
             );
         }
-        public static Menu<Garage<Vehicle>> CreateFacility(GarageHandler garageHandler)
+
+        public static Menu<GarageSummary> CreateFacility(IGarageHandler garageHandler)
         {
-            return new Menu<Garage<Vehicle>>(
+            return new Menu<GarageSummary>(
                 () => "Create Facility",
                 () =>
                 [
-                    new MenuItem<Garage<Vehicle>>(
+                    new MenuItem<GarageSummary>(
                         "Create garage",
                         valueFactory: () => CreateGarage(garageHandler)
                     ),
-                    new MenuItem<Garage<Vehicle>>("Back")
+                    new MenuItem<GarageSummary>("Back")
                 ]
             );
         }
 
-        private static Garage<Vehicle>? CreateGarage(GarageHandler garageHandler)
+        private static GarageSummary? CreateGarage(IGarageHandler garageHandler)
         {
             Console.Write("Enter garage name (leave empty to cancel): ");
             string? name = Console.ReadLine();

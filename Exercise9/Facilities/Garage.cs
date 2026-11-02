@@ -18,7 +18,81 @@ namespace Exercise9.Facilities
 
         public string GetAllowedVehicles()
         {
-            return vehicleTypes.Length == 0 ? "Empty" : string.Join(", ", VehicleTypes);
+            return VehicleTypes.Count == 0 ? "Empty" : string.Join(", ", VehicleTypes);
+        }
+
+        public bool TryParkVehicle(Vehicle vehicle)
+        {
+            if (!Accepts(vehicle))
+                return false;
+
+            int availableSlot = Array.FindIndex(vehicles, parkedVehicle => parkedVehicle is null);
+            if (availableSlot < 0)
+                return false;
+
+            vehicles[availableSlot] = vehicle;
+            return true;
+        }
+
+        private bool Accepts(Vehicle vehicle)
+        {
+            VehicleType? vehicleType = vehicle switch
+            {
+                Airplane => VehicleType.Airplane,
+                Boat => VehicleType.Boat,
+                Bus => VehicleType.Bus,
+                Car => VehicleType.Car,
+                Motorcycle => VehicleType.Motorcycle,
+                _ => null,
+            };
+
+            return vehicleType != null && VehicleTypes.Contains(vehicleType.Value);
+        }
+        public IEnumerable<(int Position, T Vehicle)> GetVehiclesWithPositions()
+        {
+            for (int index = 0; index < vehicles.Length; index++)
+            {
+                if (vehicles[index] is T vehicle)
+                    yield return (index + 1, vehicle);
+            }
+        }
+
+        public bool TryGetVehicle(int position, out T? vehicle)
+        {
+            int index = position - 1;
+            if (index < 0 || index >= vehicles.Length || vehicles[index] is not T parkedVehicle)
+            {
+                vehicle = null;
+                return false;
+            }
+
+            vehicle = parkedVehicle;
+            return true;
+        }
+
+        public bool TryReplaceVehicle(int position, Vehicle vehicle)
+        {
+            int index = position - 1;
+            if (
+                index < 0
+                || index >= vehicles.Length
+                || vehicles[index] is null
+                || !Accepts(vehicle)
+            )
+                return false;
+
+            vehicles[index] = vehicle;
+            return true;
+        }
+
+        public bool TryRemoveVehicle(int position)
+        {
+            int index = position - 1;
+            if (index < 0 || index >= vehicles.Length || vehicles[index] is null)
+                return false;
+
+            vehicles[index] = null!;
+            return true;
         }
 
         public IEnumerator<T> GetEnumerator()
