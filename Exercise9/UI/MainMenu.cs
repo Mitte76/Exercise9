@@ -36,6 +36,12 @@ namespace Exercise9.UI
                     submenu: FacilitiesMenu.CreateFacility(garageHandler)
                 )
             );
+            items.Add(
+                new MenuItem<GarageSummary>(
+                    "Manage backups",
+                    submenu: DataMenu.Create(garageHandler)
+                )
+            );
             items.Add(new MenuItem<GarageSummary>("Exit"));
             return [.. items];
         }

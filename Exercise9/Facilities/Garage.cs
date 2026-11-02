@@ -6,24 +6,36 @@ using Exercise9.Vehicles;
 
 namespace Exercise9.Facilities
 {
-    internal class Garage<T>(string name, int capacity, VehicleType[] vehicleTypes) : IEnumerable<T>
+    internal class Garage<T> : IEnumerable<T>
         where T : Vehicle
     {
+        public const int MaximumCapacity = 100_000;
 
-        private readonly Vehicle[] vehicles = new Vehicle[capacity];
+        private readonly Vehicle?[] vehicles;
 
-        public string Name { get; private set; } = name;
-        public int Capacity { get; private set; } = capacity;
-        public IReadOnlyList<VehicleType> VehicleTypes { get; } = Array.AsReadOnly(vehicleTypes);
-
-        public string GetAllowedVehicles()
+        public Garage(string name, int capacity, VehicleType[] vehicleTypes)
         {
-            return VehicleTypes.Count == 0 ? "Empty" : string.Join(", ", VehicleTypes);
+            ArgumentException.ThrowIfNullOrWhiteSpace(name);
+            ArgumentNullException.ThrowIfNull(vehicleTypes);
+            if (capacity <= 0 || capacity > MaximumCapacity)
+                throw new ArgumentOutOfRangeException(
+                    nameof(capacity),
+                    $"Capacity must be between 1 and {MaximumCapacity}."
+                );
+
+            Name = name;
+            Capacity = capacity;
+            VehicleTypes = Array.AsReadOnly(vehicleTypes.ToArray());
+            vehicles = new Vehicle?[capacity];
         }
+
+        public string Name { get; }
+        public int Capacity { get; }
+        public IReadOnlyList<VehicleType> VehicleTypes { get; }
 
         public bool TryParkVehicle(Vehicle vehicle)
         {
-            if (!Accepts(vehicle))
+            if (!Accepts(vehicle) || HasDuplicateRegistrationNumber(vehicle))
                 return false;
 
             int availableSlot = Array.FindIndex(vehicles, parkedVehicle => parkedVehicle is null);
@@ -34,8 +46,29 @@ namespace Exercise9.Facilities
             return true;
         }
 
+        internal Vehicle?[] GetVehicleSlots() => [.. vehicles];
+
+        internal bool TryParkVehicleAt(int position, Vehicle vehicle)
+        {
+            int index = position - 1;
+            if (
+                index < 0
+                || index >= vehicles.Length
+                || vehicles[index] is not null
+                || !Accepts(vehicle)
+                || HasDuplicateRegistrationNumber(vehicle)
+            )
+                return false;
+
+            vehicles[index] = vehicle;
+            return true;
+        }
+
         private bool Accepts(Vehicle vehicle)
         {
+            if (vehicle is not T)
+                return false;
+
             VehicleType? vehicleType = vehicle switch
             {
                 Airplane => VehicleType.Airplane,
@@ -48,6 +81,27 @@ namespace Exercise9.Facilities
 
             return vehicleType != null && VehicleTypes.Contains(vehicleType.Value);
         }
+
+        private bool HasDuplicateRegistrationNumber(Vehicle vehicle, int ignoredPosition = -1)
+        {
+            for (int index = 0; index < vehicles.Length; index++)
+            {
+                Vehicle? parkedVehicle = vehicles[index];
+                if (
+                    index != ignoredPosition
+                    && parkedVehicle != null
+                    && string.Equals(
+                        parkedVehicle.LicensePlateNumber,
+                        vehicle.LicensePlateNumber,
+                        StringComparison.OrdinalIgnoreCase
+                    )
+                )
+                    return true;
+            }
+
+            return false;
+        }
+
         public IEnumerable<(int Position, T Vehicle)> GetVehiclesWithPositions()
         {
             for (int index = 0; index < vehicles.Length; index++)
@@ -78,6 +132,7 @@ namespace Exercise9.Facilities
                 || index >= vehicles.Length
                 || vehicles[index] is null
                 || !Accepts(vehicle)
+                || HasDuplicateRegistrationNumber(vehicle, index)
             )
                 return false;
 
@@ -91,18 +146,16 @@ namespace Exercise9.Facilities
             if (index < 0 || index >= vehicles.Length || vehicles[index] is null)
                 return false;
 
-            vehicles[index] = null!;
+            vehicles[index] = null;
             return true;
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            foreach (T vehicle in vehicles)
+            foreach (Vehicle? vehicle in vehicles)
             {
-                if (vehicle is not null)
-                {
-                    yield return vehicle;
-                }
+                if (vehicle is T typedVehicle)
+                    yield return typedVehicle;
             }
         }
 

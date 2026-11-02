@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Exercise9.Facilities;
 using Exercise9.Menus;
 using Exercise9.Services;
 using Exercise9.Vehicles;
@@ -41,14 +42,22 @@ namespace Exercise9.UI
 
             while (true)
             {
-                Console.Write("Enter number of parking spaces (leave empty to cancel): ");
+                Console.Write(
+                    $"Enter number of parking spaces (1-{Garage<Vehicle>.MaximumCapacity}, leave empty to cancel): "
+                );
                 string? input = Console.ReadLine();
                 if (string.IsNullOrWhiteSpace(input))
                     return null;
 
-                if (!int.TryParse(input, out int capacity) || capacity <= 0)
+                if (
+                    !int.TryParse(input, out int capacity)
+                    || capacity <= 0
+                    || capacity > Garage<Vehicle>.MaximumCapacity
+                )
                 {
-                    Console.WriteLine("Capacity must be a positive whole number.");
+                    Console.WriteLine(
+                        $"Capacity must be a whole number between 1 and {Garage<Vehicle>.MaximumCapacity}."
+                    );
                     continue;
                 }
 

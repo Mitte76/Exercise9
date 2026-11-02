@@ -5,24 +5,25 @@ Detta projekt är ett konsolprogram för att hantera olika typer av parkeringspl
 ## Hur programmet startas
 
 1. Öppna terminalen i projektets rotmapp.
-2. Kör: `dotnet restore` och `dotnet run --project Exercise6/Exercise6.csproj`
+2. Kör: `dotnet restore` och `dotnet run --project Exercise9/Exercise9.csproj`
+
+## Köra tester
+
+Kör `dotnet test Exercise9.Tests/Exercise9.Tests.csproj` för enhetstesterna av garageklassen.
 
 ## Klasser och ansvar
 
-- Program: startpunkt för programmet
-- Menu: visar menyer och hanterar användarval
-- MenuItem: ett menyval
-- MenuFactory: bygger upp menyn
-- Garage: basklass för alla garage
-- ParkingSpot: en parkeringsplats
-- CarGarage: garage för bilar, motorcyklar och bussar
-- MCGarage: garage för motorcyklar
-- Hangar: garage för flygplan
-- Marina: garage för båtar
-- Vehicle: basklass för fordon
-- Car, Bus, Motorcycle, Boat, Airplane: olika fordonstyper
-- GaragePopulationService: lägger in slumpmässiga fordon
-- DataHandler: sparar och läser JSON-backupfiler
+- `Program` och `UI`: startar programmet och hanterar konsolens menyer
+- `IGarageHandler` och `GarageHandler`: förmedlar garagefunktioner mellan UI och datamodell
+- `Garage<T>`: generisk samling med kapacitet, tillåtna fordonstyper och `IEnumerable<T>`-stöd
+- `Vehicle`: gemensamma egenskaper för registreringsnummer, märke, färg och hjul
+- `Airplane`, `Boat`, `Bus`, `Car`, `Motorcycle`: fordon med egna egenskaper
+- `GaragePopulationService`: lägger in slumpmässiga fordon
+- `DataHandler`: sparar och läser JSON-backupfiler via **Manage backups** i huvudmenyn
+
+Garagevyn kan lista och gruppera parkerade fordon, söka på typ, registreringsnummer, märke, färg och antal hjul samt parkera, redigera och hämta ut fordon. Registreringsnummer jämförs utan hänsyn till versaler/gemener och ska vara unika mellan garagen.
+
+Backupmenyn kan spara alla garage och parkerade fordon till en JSON-fil och läsa tillbaka en tidigare backup.
 
 ## Feedback
 

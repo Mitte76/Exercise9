@@ -1,25 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Exercise9.Vehicles
+﻿namespace Exercise9.Vehicles
 {
-    internal class Boat(string brand, string color, decimal length) : Vehicle(brand, color)
+    internal class Boat(
+        string brand,
+        string color,
+        string licensePlateNumber,
+        int numberOfWheels,
+        decimal length
+    ) : Vehicle(brand, color, licensePlateNumber, numberOfWheels)
     {
         public decimal Length { get; set; } = length;
-
-        public static Boat Create()
-        {
-            var (brand, color) = GetCommonProperties("Boat");
-
-            string? lengthInput = ReadInput("Enter length of boat:");
-            if (lengthInput == null)
-                throw new OperationCanceledException("Adding Boat aborted");
-
-            if (!decimal.TryParse(lengthInput, out decimal length))
-                throw new ArgumentException("Invalid length");
-
-            return new Boat(brand, color, length);
-        }
     }
 }

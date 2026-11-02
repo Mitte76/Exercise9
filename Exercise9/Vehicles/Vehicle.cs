@@ -12,44 +12,51 @@ namespace Exercise9.Vehicles
     [JsonDerivedType(typeof(Bus), "Bus")]
     [JsonDerivedType(typeof(Car), "Car")]
     [JsonDerivedType(typeof(Motorcycle), "Motorcycle")]
-    public class Vehicle(string brand, string color)
+    public class Vehicle(string brand, string color, string licensePlateNumber, int numberOfWheels)
+        : IVehicle
     {
-        public string Color { get; set; } = IsValidInput(color, "Color");
+        public string Color
+        {
+            get;
+            set => field = ValidateColor(value);
+        } = ValidateColor(color);
+
         public string Brand
         {
             get;
-            set => field = IsValidInput(value, "Brand");
-        } = IsValidInput(brand, "Brand");
+            set => field = ValidateBrand(value);
+        } = ValidateBrand(brand);
 
-        private static string IsValidInput(string color, string property)
+        public string LicensePlateNumber
         {
-            if (!Regex.IsMatch(color, @"^[\p{L}]+$"))
+            get;
+            set => field = ValidateLicensePlateNumber(value);
+        } = ValidateLicensePlateNumber(licensePlateNumber);
+
+        public int NumberOfWheels
+        {
+            get;
+            set =>
+                field = value >= 0 ? value : throw new ArgumentOutOfRangeException(nameof(value));
+        } =
+            numberOfWheels >= 0
+                ? numberOfWheels
+                : throw new ArgumentOutOfRangeException(nameof(numberOfWheels));
+
+        internal static string ValidateBrand(string value) => ValidateDescriptiveInput(value, "Brand");
+
+        internal static string ValidateColor(string value) => ValidateDescriptiveInput(value, "Color");
+
+        private static string ValidateDescriptiveInput(string value, string property)
+        {
+            if (string.IsNullOrWhiteSpace(value))
                 throw new ArgumentException($"Invalid {property}");
-            return color;
-        }
 
-        protected static (string Brand, string Color) GetCommonProperties(string type)
-        {
-            string? brand = ReadInput("Enter brand:");
-            if (brand == null)
-                throw new OperationCanceledException($"Adding {type} aborted");
+            string normalized = value.Trim();
+            if (!Regex.IsMatch(normalized, @"^[\p{L}\p{N}]+(?:[ \-][\p{L}\p{N}]+)*$"))
+                throw new ArgumentException($"Invalid {property}");
 
-            string? color = ReadInput("Enter color:");
-            if (color == null)
-                throw new OperationCanceledException($"Adding {type} aborted");
-
-            return (brand, color);
-        }
-
-        protected static string? ReadInput(string prompt, bool skip = false)
-        {
-            Console.Write($"{prompt}");
-            if (!skip)
-                Console.Write(" Leave empty to exit\n");
-
-            string? input = Console.ReadLine();
-
-            return string.IsNullOrWhiteSpace(input) ? null : input;
+            return normalized;
         }
 
         internal static string ValidateLicensePlateNumber(
@@ -59,12 +66,12 @@ namespace Exercise9.Vehicles
         )
         {
             if (string.IsNullOrWhiteSpace(registrationNumber))
-                throw new ArgumentException("License plate cannot be empty.");
+                throw new ArgumentException("Registration number cannot be empty.");
 
             string normalized = registrationNumber.Trim().Replace(" ", "").ToUpperInvariant();
 
             if (!Regex.IsMatch(normalized, @"^[A-HJ-PR-UW-Z]{3}[0-9]{2}[A-HJ-PR-UW-Z0-9]$"))
-                throw new ArgumentException("Licence plate number is not valid");
+                throw new ArgumentException("Registration number is not valid.");
 
             if (facilities != null)
             {
@@ -75,17 +82,15 @@ namespace Exercise9.Vehicles
                         if (ReferenceEquals(parkedVehicle, vehicleBeingUpdated))
                             continue;
 
-                        string? existing = parkedVehicle switch
-                        {
-                            Car car => car.LicensePlateNumber,
-                            Bus bus => bus.LicensePlateNumber,
-                            Motorcycle motorcycle => motorcycle.LicensePlateNumber,
-                            _ => null,
-                        };
-
-                        if (string.Equals(existing, normalized, StringComparison.OrdinalIgnoreCase))
+                        if (
+                            string.Equals(
+                                parkedVehicle.LicensePlateNumber,
+                                normalized,
+                                StringComparison.OrdinalIgnoreCase
+                            )
+                        )
                             throw new ArgumentException(
-                                "A vehicle with that license plate already exists"
+                                "A vehicle with that registration number already exists."
                             );
                     }
                 }
@@ -93,6 +98,5 @@ namespace Exercise9.Vehicles
 
             return normalized;
         }
-
     }
 }

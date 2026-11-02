@@ -1,124 +1,182 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Exercise9.Facilities;
-using Exercise9.Vehicles;
+using Exercise9.Services;
 
 namespace Exercise9.Data
 {
     internal static class DataHandler
     {
-        internal static async Task<string?> WriteToDatabase(List<Garage<Vehicle>> facilities)
+        private static readonly JsonSerializerOptions JsonOptions = new() { WriteIndented = true };
+        private static readonly Regex BackupNamePattern = new(@"^[a-zA-Z0-9_-]+$");
+
+        internal static async Task<string> WriteToFile(IGarageHandler garageHandler, string fileName)
         {
-            if (facilities.Count == 0)
-            {
-                return "There is nothing to save, Aborting";
-            }
-            string solutionDirectory = Path.GetFullPath(
-                Path.Combine(AppContext.BaseDirectory, @"..\..\..\")
-            );
+            if (garageHandler.GarageCount == 0)
+                return "There are no garages to save.";
+            if (!IsValidBackupName(fileName))
+                return "The file name may only contain letters, numbers, underscores, and hyphens.";
 
-            string? fileName;
-
-            while (true)
-            {
-                Console.WriteLine("Please enter a filename to backup to (Leave empty to abort)");
-                fileName = Console.ReadLine();
-
-                if (string.IsNullOrEmpty(fileName))
-                {
-                    return "File name can not be empty";
-                }
-
-                string pattern = @"^[a-zA-Z0-9]+$";
-                Regex regex = new(pattern, RegexOptions.IgnoreCase);
-
-                if (!regex.IsMatch(fileName))
-                {
-                    Console.WriteLine("Filname can only contain a-z, 0-9");
-                    Console.ReadKey();
-                    continue;
-                }
-                break;
-            }
-            fileName += ".json";
-
-            string directory = Path.Combine(solutionDirectory, "Data", "Backups");
-            string path = Path.Combine(directory, fileName);
-
-            if (!Directory.Exists(directory))
-            {
-                Directory.CreateDirectory(directory);
-            }
-
-            var options = new JsonSerializerOptions { IncludeFields = true, WriteIndented = true };
-
-            await using FileStream createStream = File.Create(path);
-
+            string path = GetBackupPath(fileName);
             try
             {
-                await JsonSerializer.SerializeAsync(createStream, facilities, options);
-                return $"Data written to file {path}";
+                Directory.CreateDirectory(Path.GetDirectoryName(path)!);
+                string json = JsonSerializer.Serialize(garageHandler.CreateBackupSnapshot(), JsonOptions);
+                await File.WriteAllTextAsync(path, json);
+                return $"Backup saved as {fileName}.json.";
             }
-            catch (Exception)
+            catch (IOException exception)
             {
-                return "Something went wrong";
+                return $"Could not save backup: {exception.Message}";
+            }
+            catch (UnauthorizedAccessException exception)
+            {
+                return $"Could not save backup: {exception.Message}";
+            }
+            catch (JsonException exception)
+            {
+                return $"Could not serialize backup: {exception.Message}";
             }
         }
 
         internal static string[] GetAvailableBackups()
         {
-            string solutionDirectory = Path.GetFullPath(
-                Path.Combine(AppContext.BaseDirectory, @"..\..\..\")
-            );
-            string directory = Path.Combine(solutionDirectory, "Data", "Backups");
-
+            string directory = GetBackupDirectory();
             if (!Directory.Exists(directory))
-            {
-                Console.WriteLine("Du har inga sparade backups");
-                Console.ReadKey();
                 return [];
-            }
 
-            return Directory.GetFiles(directory);
+            string[] backups = Directory.GetFiles(directory, "*.json");
+            Array.Sort(backups, StringComparer.OrdinalIgnoreCase);
+            for (int index = 0; index < backups.Length; index++)
+                backups[index] = Path.GetFileNameWithoutExtension(backups[index]);
+
+            return backups;
         }
 
-        internal static async Task<string?> ReadFromDatabase(
-            List<Garage<Vehicle>> facilities,
-            string filename
-        )
+        internal static async Task<string> ReadFromFile(IGarageHandler garageHandler, string fileName)
         {
-            string solutionDirectory = Path.GetFullPath(
-                Path.Combine(AppContext.BaseDirectory, @"..\..\..\")
-            );
-            string path = Path.Combine(solutionDirectory, @"Data\Backups", filename);
+            if (!IsValidBackupName(fileName))
+                return "The selected backup name is invalid.";
 
+            string path = GetBackupPath(fileName);
             if (!File.Exists(path))
-                return "The file does not exist";
+                return "The backup file does not exist.";
 
-            await using FileStream stream = File.OpenRead(path);
             try
             {
-                List<Garage<Vehicle>>? loadedFacilities = await JsonSerializer.DeserializeAsync<
-                    List<Garage<Vehicle>>
-                >(stream);
+                string json = await File.ReadAllTextAsync(path);
+                GarageSnapshot[]? snapshots = JsonSerializer.Deserialize<GarageSnapshot[]>(
+                    UpgradeLegacyBackup(json),
+                    JsonOptions
+                );
+                if (snapshots == null)
+                    return "The backup file does not contain valid garage data.";
 
-                if (loadedFacilities != null)
-                {
-                    facilities.Clear();
-                    facilities.AddRange(loadedFacilities);
-                }
-
-                return "File loaded successfully.";
+                garageHandler.RestoreBackupSnapshot(snapshots);
+                return $"Backup {fileName}.json loaded successfully.";
             }
-            catch (Exception ex)
+            catch (IOException exception)
             {
-                Console.WriteLine(ex);
-                return $"Something went wrong {ex.Message}";
+                return $"Could not read backup: {exception.Message}";
             }
+            catch (UnauthorizedAccessException exception)
+            {
+                return $"Could not read backup: {exception.Message}";
+            }
+            catch (JsonException exception)
+            {
+                return $"The backup file is invalid: {exception.Message}";
+            }
+            catch (InvalidDataException exception)
+            {
+                return $"The backup data is invalid: {exception.Message}";
+            }
+            catch (ArgumentException exception)
+            {
+                return $"The backup data is invalid: {exception.Message}";
+            }
+        }
+
+        private static string UpgradeLegacyBackup(string json)
+        {
+            if (JsonNode.Parse(json) is not JsonArray garages)
+                return json;
+
+            HashSet<string> existingRegistrationNumbers = new(StringComparer.OrdinalIgnoreCase);
+            foreach (JsonObject garage in garages.OfType<JsonObject>())
+            {
+                if (garage["Vehicles"] is not JsonArray vehicles)
+                    continue;
+
+                foreach (JsonObject vehicle in vehicles.OfType<JsonObject>())
+                {
+                    string? registrationNumber = (string?)vehicle["LicensePlateNumber"];
+                    if (!string.IsNullOrWhiteSpace(registrationNumber))
+                        existingRegistrationNumbers.Add(registrationNumber);
+                }
+            }
+
+            int generatedNumber = 0;
+            foreach (JsonObject garage in garages.OfType<JsonObject>())
+            {
+                if (garage["Vehicles"] is not JsonArray vehicles)
+                    continue;
+
+                foreach (JsonObject vehicle in vehicles.OfType<JsonObject>())
+                {
+                    if (vehicle["LicensePlateNumber"] is null)
+                    {
+                        string candidate;
+                        do
+                        {
+                            if (generatedNumber > 999)
+                                throw new JsonException(
+                                    "The backup contains too many vehicles without registration numbers."
+                                );
+                            candidate = $"ZZZ{generatedNumber++:D3}";
+                        } while (!existingRegistrationNumbers.Add(candidate));
+
+                        vehicle["LicensePlateNumber"] = candidate;
+                    }
+
+                    if (vehicle["NumberOfWheels"] is null)
+                    {
+                        vehicle["NumberOfWheels"] = (string?)vehicle["type"] switch
+                        {
+                            "Airplane" => 6,
+                            "Boat" => 0,
+                            "Bus" => 6,
+                            "Car" => 4,
+                            "Motorcycle" => 2,
+                            _ => 0,
+                        };
+                    }
+                }
+            }
+
+            return garages.ToJsonString();
+        }
+
+        private static bool IsValidBackupName(string fileName)
+        {
+            return !string.IsNullOrWhiteSpace(fileName) && BackupNamePattern.IsMatch(fileName);
+        }
+
+        private static string GetBackupPath(string fileName)
+        {
+            return Path.Combine(GetBackupDirectory(), $"{fileName}.json");
+        }
+
+        private static string GetBackupDirectory()
+        {
+            return Path.GetFullPath(
+                Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "Data", "Backups")
+            );
         }
     }
 }

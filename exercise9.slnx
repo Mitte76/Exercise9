@@ -3,5 +3,6 @@
     <File Path=".gitignore" />
     <File Path="README.md" />
   </Folder>
+  <Project Path="Exercise9.Tests/Exercise9.Tests.csproj" />
   <Project Path="Exercise9/Exercise9.csproj" />
 </Solution>

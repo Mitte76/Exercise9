@@ -62,22 +62,7 @@ namespace Exercise9.Menus
                         return null;
 
                     MenuItem<T> selected = items[selectedIndex];
-                    Menu<T>? submenu;
-
-                    if (selected.SubmenuFactory != null)
-                    {
-                        submenu = selected.SubmenuFactory();
-
-                        if (submenu == null)
-                        {
-                            selectedIndex = 0;
-                            continue;
-                        }
-                    }
-                    else
-                    {
-                        submenu = selected.Submenu;
-                    }
+                    Menu<T>? submenu = selected.Submenu;
 
                     if (submenu != null)
                     {
@@ -92,16 +77,13 @@ namespace Exercise9.Menus
                     if (selected.Action != null)
                     {
                         _message = selected.Action.Invoke();
-                        if (!selected.BackOutWhenDone)
-                            continue;
+                        continue;
                     }
 
                     if (selected.TaskAction != null)
                     {
                         _message = await selected.TaskAction();
-
-                        if (!selected.BackOutWhenDone)
-                            continue;
+                        continue;
                     }
 
                     if (selected.ValueFactory != null)

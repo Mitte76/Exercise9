@@ -82,25 +82,36 @@ namespace Exercise9.Services
                 VehicleType.Airplane => new Airplane(
                     brand,
                     color,
+                    CreateUniqueLicensePlate(facilities),
+                    6,
                     PickRandom(AirplaneEngineCounts)
                 ),
-                VehicleType.Boat => new Boat(brand, color, PickRandom(BoatLengths)),
+                VehicleType.Boat => new Boat(
+                    brand,
+                    color,
+                    CreateUniqueLicensePlate(facilities),
+                    0,
+                    PickRandom(BoatLengths)
+                ),
                 VehicleType.Bus => new Bus(
                     brand,
                     color,
                     CreateUniqueLicensePlate(facilities),
+                    6,
                     PickRandom(BusSeatCounts)
                 ),
                 VehicleType.Car => new Car(
                     brand,
                     color,
                     CreateUniqueLicensePlate(facilities),
+                    4,
                     PickRandom(FuelTypes)
                 ),
                 VehicleType.Motorcycle => new Motorcycle(
                     brand,
                     color,
                     CreateUniqueLicensePlate(facilities),
+                    2,
                     PickRandom(MotorcycleEngineVolumes)
                 ),
                 _ => throw new ArgumentOutOfRangeException(
@@ -167,15 +178,13 @@ namespace Exercise9.Services
             {
                 foreach ((int _, Vehicle vehicle) in garage.GetVehiclesWithPositions())
                 {
-                    string? existingLicensePlate = vehicle switch
-                    {
-                        Car car => car.LicensePlateNumber,
-                        Bus bus => bus.LicensePlateNumber,
-                        Motorcycle motorcycle => motorcycle.LicensePlateNumber,
-                        _ => null,
-                    };
-
-                    if (string.Equals(existingLicensePlate, licensePlate, StringComparison.OrdinalIgnoreCase))
+                    if (
+                        string.Equals(
+                            vehicle.LicensePlateNumber,
+                            licensePlate,
+                            StringComparison.OrdinalIgnoreCase
+                        )
+                    )
                         return true;
                 }
             }
