@@ -12,11 +12,13 @@ namespace Exercise9.Services
         string Name,
         int Capacity,
         int VehicleCount,
+        int OccupiedParkingSpaceUnits,
         IReadOnlyList<VehicleType> VehicleTypes
     );
 
     internal sealed record ParkedVehicleSummary(
         int Number,
+        IReadOnlyList<int> ParkingSpotNumbers,
         string Type,
         string Brand,
         string Color,
@@ -67,7 +69,7 @@ namespace Exercise9.Services
                     || snapshot.VehicleTypes is null
                     || snapshot.VehicleTypes.Length == 0
                     || snapshot.Vehicles is null
-                    || snapshot.Vehicles.Length != snapshot.Capacity
+                    || snapshot.Vehicles.Length > snapshot.Capacity * ParkingSpot.UnitsPerSpace
                     || snapshot.VehicleTypes.Any(type => !Enum.IsDefined(type))
                 )
                     throw new InvalidDataException("The backup contains an invalid garage.");
@@ -111,10 +113,23 @@ namespace Exercise9.Services
 
         public IReadOnlyList<ParkedVehicleSummary> GetParkedVehicles(int garageId)
         {
-            return FindGarage(garageId)
+            Garage<Vehicle> garage = FindGarage(garageId);
+            return garage
                 .GetVehiclesWithPositions()
-                .Select(vehicle => CreateVehicleSummary(vehicle.Position, vehicle.Vehicle))
+                .Select(vehicle =>
+                    CreateVehicleSummary(
+                        vehicle.Position,
+                        garage.GetParkingSpotNumbers(vehicle.Vehicle),
+                        vehicle.Vehicle
+                    )
+                )
                 .ToArray();
+        }
+
+        public IReadOnlyList<VehicleType> GetParkableVehicleTypes(int garageId)
+        {
+            Garage<Vehicle> garage = FindGarage(garageId);
+            return garage.VehicleTypes.Where(garage.HasSpaceFor).ToArray();
         }
 
         public IReadOnlyList<ParkedVehicleSummary> SearchVehicles(
@@ -128,7 +143,13 @@ namespace Exercise9.Services
             return garage
                 .GetVehiclesWithPositions()
                 .Where(entry => MatchesSearchCriteria(entry.Vehicle, criteria.Criteria))
-                .Select(entry => CreateVehicleSummary(entry.Position, entry.Vehicle))
+                .Select(entry =>
+                    CreateVehicleSummary(
+                        entry.Position,
+                        garage.GetParkingSpotNumbers(entry.Vehicle),
+                        entry.Vehicle
+                    )
+                )
                 .ToArray();
         }
 
@@ -168,17 +189,19 @@ namespace Exercise9.Services
         {
             ArgumentNullException.ThrowIfNull(vehicle);
             Garage<Vehicle> garage = FindGarage(garageId);
-            if (garage.Count() >= garage.Capacity)
-                return "The garage is full.";
-
             VehicleType? vehicleType = GetVehicleType(vehicle);
             if (vehicleType == null || !garage.VehicleTypes.Contains(vehicleType.Value))
                 return $"This garage does not accept {vehicle.GetType().Name}.";
 
+            if (!garage.HasSpaceFor(vehicle))
+                return $"There is not enough parking space for this {vehicleType}.";
+
             Vehicle.ValidateLicensePlateNumber(vehicle.LicensePlateNumber, [.. _garages.Values]);
-            return garage.TryParkVehicle(vehicle)
-                ? $"{vehicleType} parked in {garage.Name}."
-                : $"Could not park the {vehicleType}.";
+            if (!garage.TryParkVehicle(vehicle))
+                return $"Could not park the {vehicleType}.";
+
+            string parkingSpots = string.Join(", ", garage.GetParkingSpotNumbers(vehicle));
+            return $"{vehicleType} parked in {garage.Name} at parking spot(s) {parkingSpots}.";
         }
 
         public string PopulateGarage(int garageId)
@@ -247,11 +270,16 @@ namespace Exercise9.Services
                 garage.Name,
                 garage.Capacity,
                 garage.Count(),
+                garage.OccupiedParkingSpaceUnits,
                 Array.AsReadOnly(garage.VehicleTypes.ToArray())
             );
         }
 
-        private static ParkedVehicleSummary CreateVehicleSummary(int number, Vehicle vehicle)
+        private static ParkedVehicleSummary CreateVehicleSummary(
+            int number,
+            IReadOnlyList<int> parkingSpotNumbers,
+            Vehicle vehicle
+        )
         {
             string typeDetails = vehicle switch
             {
@@ -263,10 +291,12 @@ namespace Exercise9.Services
                 _ => string.Empty,
             };
             string details =
-                $"Registration: {vehicle.LicensePlateNumber}; Wheels: {vehicle.NumberOfWheels}; {typeDetails}";
+                $"Registration: {vehicle.LicensePlateNumber}; Wheels: {vehicle.NumberOfWheels}; "
+                + $"Parking spaces: {vehicle.ParkingSpaceRequirement:0.##}; {typeDetails}";
 
             return new ParkedVehicleSummary(
                 number,
+                parkingSpotNumbers,
                 vehicle.GetType().Name,
                 vehicle.Brand,
                 vehicle.Color,

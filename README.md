@@ -16,12 +16,13 @@ Kör `dotnet test Exercise9.Tests/Exercise9.Tests.csproj` för enhetstesterna av
 - `Program` och `UI`: startar programmet och hanterar konsolens menyer
 - `IGarageHandler` och `GarageHandler`: förmedlar garagefunktioner mellan UI och datamodell
 - `Garage<T>`: generisk samling med kapacitet, tillåtna fordonstyper och `IEnumerable<T>`-stöd
-- `Vehicle`: gemensamma egenskaper för registreringsnummer, märke, färg och hjul
-- `Airplane`, `Boat`, `Bus`, `Car`, `Motorcycle`: fordon med egna egenskaper
+- `ParkingSpot`: delar varje plats i tredjedelar så fordon kan använda olika mycket utrymme
+- `Vehicle`: gemensamma egenskaper för registreringsnummer, märke, färg, hjul och platsbehov
+- `Airplane`, `Boat`, `Bus`, `Car`, `Motorcycle`: fordon med egna egenskaper och platsbehov
 - `GaragePopulationService`: lägger in slumpmässiga fordon
 - `DataHandler`: sparar och läser JSON-backupfiler via **Manage backups** i huvudmenyn
 
-Garagevyn kan lista och gruppera parkerade fordon, söka på typ, registreringsnummer, märke, färg och antal hjul samt parkera, redigera och hämta ut fordon. Registreringsnummer jämförs utan hänsyn till versaler/gemener och ska vara unika mellan garagen.
+Garagevyn kan lista och gruppera parkerade fordon, söka på typ, registreringsnummer, märke, färg och antal hjul samt parkera, redigera och hämta ut fordon. Registreringsnummer jämförs utan hänsyn till versaler/gemener och ska vara unika mellan garagen. En bil använder 1 plats, buss och båt 2, flygplan 3 och motorcyklar delar en plats tre och tre.
 
 Backupmenyn kan spara alla garage och parkerade fordon till en JSON-fil och läsa tillbaka en tidigare backup.
 

@@ -1,6 +1,6 @@
 ﻿namespace Exercise9.Vehicles
 {
-    internal class Car(
+    public class Car(
         string brand,
         string color,
         string licensePlateNumber,

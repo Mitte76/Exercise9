@@ -1,6 +1,6 @@
 ﻿namespace Exercise9.Vehicles
 {
-    internal class Motorcycle(
+    public class Motorcycle(
         string brand,
         string color,
         string licensePlateNumber,
@@ -9,5 +9,6 @@
     ) : Vehicle(brand, color, licensePlateNumber, numberOfWheels)
     {
         public int CylinderVolume { get; set; } = cylinderVolume;
+        public override decimal ParkingSpaceRequirement => VehicleType.Motorcycle.GetParkingSpaceRequirement();
     }
 }

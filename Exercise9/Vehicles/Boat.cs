@@ -1,6 +1,6 @@
 ﻿namespace Exercise9.Vehicles
 {
-    internal class Boat(
+    public class Boat(
         string brand,
         string color,
         string licensePlateNumber,
@@ -9,5 +9,6 @@
     ) : Vehicle(brand, color, licensePlateNumber, numberOfWheels)
     {
         public decimal Length { get; set; } = length;
+        public override decimal ParkingSpaceRequirement => VehicleType.Boat.GetParkingSpaceRequirement();
     }
 }

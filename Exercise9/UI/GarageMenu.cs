@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Exercise9.Facilities;
 using Exercise9.Menus;
 using Exercise9.Services;
 using Exercise9.Vehicles;
@@ -19,14 +20,14 @@ namespace Exercise9.UI
                 {
                     GarageSummary summary = garageHandler.GetGarageSummary(garageId);
                     return $"Allowed vehicles: {string.Join(", ", summary.VehicleTypes)} | "
-                        + $"Spaces: {summary.VehicleCount}/{summary.Capacity}";
+                        + $"Vehicles: {summary.VehicleCount} | "
+                        + $"Spaces: {summary.OccupiedParkingSpaceUnits / (decimal)ParkingSpot.UnitsPerSpace:0.##}/{summary.Capacity}";
                 }
             ).ShowMenu();
         }
 
         private static MenuItem<string>[] GetMenuItems(int garageId, IGarageHandler garageHandler)
         {
-            GarageSummary summary = garageHandler.GetGarageSummary(garageId);
             List<MenuItem<string>> items =
             [
                 new MenuItem<string>(
@@ -39,24 +40,39 @@ namespace Exercise9.UI
                 ),
             ];
 
-            foreach (VehicleType vehicleType in summary.VehicleTypes)
-            {
-                items.Add(
-                    new MenuItem<string>(
-                        $"Park {vehicleType}",
-                        action: () => AddVehicle(garageHandler, garageId, vehicleType)
-                    )
-                );
-            }
-
             items.Add(
                 new MenuItem<string>(
-                    "Populate garage with random vehicles",
-                    action: () => garageHandler.PopulateGarage(garageId)
+                    "Park new vehicle",
+                    submenu: CreateVehicleTypeMenu(garageHandler, garageId)
                 )
             );
             items.Add(new MenuItem<string>("Back"));
             return [.. items];
+        }
+
+        private static Menu<string> CreateVehicleTypeMenu(
+            IGarageHandler garageHandler,
+            int garageId
+        )
+        {
+            return new Menu<string>(
+                () => "Park new vehicle",
+                () =>
+                    garageHandler
+                        .GetParkableVehicleTypes(garageId)
+                        .Select(vehicleType => new MenuItem<string>(
+                            $"Park {vehicleType}",
+                            action: () => AddVehicle(garageHandler, garageId, vehicleType)
+                        ))
+                        .Append(
+                            new MenuItem<string>(
+                                "Populate garage with random vehicles",
+                                action: () => garageHandler.PopulateGarage(garageId)
+                            )
+                        )
+                        .Append(new MenuItem<string>("Back"))
+                        .ToArray()
+            );
         }
 
         private static async Task<string?> SelectParkedVehicle(
@@ -118,7 +134,7 @@ namespace Exercise9.UI
                             ParkedVehicleSummary vehicle = filteredVehicles[index];
                             items.Add(
                                 new MenuItem<ParkedVehicleSummary>(
-                                    $"#{vehicle.Number} {vehicle.Type} - {vehicle.Brand}",
+                                    $"Spot {string.Join(", ", vehicle.ParkingSpotNumbers)} | {vehicle.Type} - {vehicle.Brand}",
                                     value: vehicle
                                 )
                             );
@@ -284,7 +300,7 @@ namespace Exercise9.UI
                         () => "Search Results",
                         matches,
                         vehicle =>
-                            $"#{vehicle.Number} {vehicle.Type} - {vehicle.Brand}, {vehicle.Color} ({vehicle.Details})",
+                            $"Spot {string.Join(", ", vehicle.ParkingSpotNumbers)} | {vehicle.Type} - {vehicle.Brand}, {vehicle.Color} ({vehicle.Details})",
                         extra: () =>
                             $"Criteria: {selectedCriteria} | Matches: {matches.Count}"
                             + (actionMessage == null ? "" : $" | {actionMessage}")
@@ -426,10 +442,8 @@ namespace Exercise9.UI
                 Vehicle replacement = VehicleForm.Create(
                     vehicleType,
                     currentVehicle,
-                    registrationNumber => garageHandler.ValidateLicensePlateNumber(
-                        registrationNumber,
-                        currentVehicle
-                    )
+                    registrationNumber =>
+                        garageHandler.ValidateLicensePlateNumber(registrationNumber, currentVehicle)
                 );
                 return garageHandler.EditVehicle(garageId, vehicleNumber, replacement);
             }
@@ -464,10 +478,6 @@ namespace Exercise9.UI
         {
             try
             {
-                GarageSummary garage = garageHandler.GetGarageSummary(garageId);
-                if (garage.VehicleCount >= garage.Capacity)
-                    return "The garage is full.";
-
                 Vehicle vehicle = VehicleForm.Create(vehicleType);
                 return garageHandler.AddVehicle(garageId, vehicle);
             }

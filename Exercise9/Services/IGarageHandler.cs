@@ -18,6 +18,7 @@ namespace Exercise9.Services
         void RestoreBackupSnapshot(IReadOnlyList<GarageSnapshot> snapshots);
         GarageSummary GetGarageSummary(int garageId);
         IReadOnlyList<ParkedVehicleSummary> GetParkedVehicles(int garageId);
+        IReadOnlyList<VehicleType> GetParkableVehicleTypes(int garageId);
         IReadOnlyList<ParkedVehicleSummary> SearchVehicles(
             int garageId,
             VehicleSearchCriteria criteria

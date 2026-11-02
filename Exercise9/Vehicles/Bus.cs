@@ -1,6 +1,6 @@
 ﻿namespace Exercise9.Vehicles
 {
-    internal class Bus(
+    public class Bus(
         string brand,
         string color,
         string licensePlateNumber,
@@ -9,5 +9,6 @@
     ) : Vehicle(brand, color, licensePlateNumber, numberOfWheels)
     {
         public int NumberOfSeats { get; set; } = numberOfSeats;
+        public override decimal ParkingSpaceRequirement => VehicleType.Bus.GetParkingSpaceRequirement();
     }
 }

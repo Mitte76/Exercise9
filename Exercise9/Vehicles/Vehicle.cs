@@ -43,6 +43,8 @@ namespace Exercise9.Vehicles
                 ? numberOfWheels
                 : throw new ArgumentOutOfRangeException(nameof(numberOfWheels));
 
+        public virtual decimal ParkingSpaceRequirement => 1m;
+
         internal static string ValidateBrand(string value) => ValidateDescriptiveInput(value, "Brand");
 
         internal static string ValidateColor(string value) => ValidateDescriptiveInput(value, "Color");

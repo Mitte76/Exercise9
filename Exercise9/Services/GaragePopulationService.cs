@@ -48,22 +48,29 @@ namespace Exercise9.Services
                     "The garage does not support any vehicle types."
                 );
 
-            int availableSlots = garage.Capacity - garage.Count();
-            if (availableSlots <= 0)
+            int availableUnits = garage.AvailableParkingSpaceUnits;
+            if (availableUnits <= 0)
                 return $"{garage.Name} is already full.";
 
-            int vehiclesToAdd = availableSlots / 2 + availableSlots % 2;
+            int targetUnits = (availableUnits + 1) / 2;
+            int addedUnits = 0;
             int addedVehicles = 0;
 
-            for (int i = 0; i < vehiclesToAdd; i++)
+            while (garage.AvailableParkingSpaceUnits > 0 && addedUnits < targetUnits)
             {
-                VehicleType type = garage.VehicleTypes[
-                    Random.Shared.Next(garage.VehicleTypes.Count)
-                ];
+                VehicleType[] parkableTypes = garage.VehicleTypes
+                    .Where(garage.HasSpaceFor)
+                    .ToArray();
+                if (parkableTypes.Length == 0)
+                    break;
+
+                VehicleType type = PickRandom(parkableTypes);
                 Vehicle vehicle = CreateVehicle(type, facilities);
+                int availableUnitsBeforeParking = garage.AvailableParkingSpaceUnits;
                 if (!garage.TryParkVehicle(vehicle))
                     break;
 
+                addedUnits += availableUnitsBeforeParking - garage.AvailableParkingSpaceUnits;
                 addedVehicles++;
             }
 
