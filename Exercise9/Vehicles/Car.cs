@@ -16,7 +16,7 @@ namespace Exercise9.Vehicles
             set => field = ValidateLicensePlateNumber(value);
         } = ValidateLicensePlateNumber(licensePlateNumber);
 
-        public static Car Create(List<Garage> facilities)
+        public static Car Create(List<Garage<Vehicle>> facilities)
         {
             var (brand, color) = GetCommonProperties("Car");
 

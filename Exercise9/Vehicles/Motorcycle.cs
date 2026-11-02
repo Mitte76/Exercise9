@@ -19,7 +19,7 @@ namespace Exercise9.Vehicles
 
         public int CylinderVolume { get; set; } = cylinderVolume;
 
-        public static Motorcycle Create(List<Garage> facilities)
+        public static Motorcycle Create(List<Garage<Vehicle>> facilities)
         {
             var (brand, color) = GetCommonProperties("Motorcycle");
 

@@ -15,7 +15,7 @@ namespace Exercise9.Vehicles
 
         public int NumberOfSeats { get; set; } = numberOfSeats;
 
-        public static Bus Create(List<Garage> facilities)
+        public static Bus Create(List<Garage<Vehicle>> facilities)
         {
             var (brand, color) = GetCommonProperties("Bus");
 

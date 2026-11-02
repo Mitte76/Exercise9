@@ -54,7 +54,7 @@ namespace Exercise9.Vehicles
 
         internal static string ValidateLicensePlateNumber(
             string registrationNumber,
-            List<Garage>? facilities = null,
+            List<Garage<Vehicle>>? facilities = null,
             Vehicle? vehicleBeingUpdated = null
         )
         {
@@ -68,29 +68,29 @@ namespace Exercise9.Vehicles
 
             if (facilities != null)
             {
-                foreach (Garage facility in facilities)
+                foreach (Garage<Vehicle> facility in facilities)
                 {
-                    foreach (ParkingSpot spot in facility.ParkingSpots)
-                    {
-                        if (
-                            spot.Vehicle is null
-                            || ReferenceEquals(spot.Vehicle, vehicleBeingUpdated)
-                        )
-                            continue;
+                    //foreach (ParkingSpot spot in facility.ParkingSpots)
+                    //{
+                    //    if (
+                    //        spot.Vehicle is null
+                    //        || ReferenceEquals(spot.Vehicle, vehicleBeingUpdated)
+                    //    )
+                    //        continue;
 
-                        string? existing = spot.Vehicle switch
-                        {
-                            Car car => car.LicensePlateNumber,
-                            Bus bus => bus.LicensePlateNumber,
-                            Motorcycle motorcycle => motorcycle.LicensePlateNumber,
-                            _ => null,
-                        };
+                    //    string? existing = spot.Vehicle switch
+                    //    {
+                    //        Car car => car.LicensePlateNumber,
+                    //        Bus bus => bus.LicensePlateNumber,
+                    //        Motorcycle motorcycle => motorcycle.LicensePlateNumber,
+                    //        _ => null,
+                    //    };
 
-                        if (string.Equals(existing, normalized, StringComparison.OrdinalIgnoreCase))
-                            throw new ArgumentException(
-                                "A vehicle with that license plate already exists"
-                            );
-                    }
+                    //    if (string.Equals(existing, normalized, StringComparison.OrdinalIgnoreCase))
+                    //        throw new ArgumentException(
+                    //            "A vehicle with that license plate already exists"
+                    //        );
+                    //}
                 }
             }
 

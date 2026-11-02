@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Exercise9.Facilities;
 using Exercise9.Services;
+using Exercise9.Vehicles;
 using Exercise9.UI;
 
 namespace Exercise9
@@ -10,9 +12,12 @@ namespace Exercise9
         static async Task Main()
         {
             GarageHandler garageHandler = new();
-            MainMenu mainMenu = new(garageHandler: garageHandler);
+            MainMenu mainMenu = new();
+            Garage<Vehicle>? selectedGarage;
+            garageHandler.AddGarage();
 
-            await mainMenu.Show().ShowMenu();
+            while ((selectedGarage = await mainMenu.ShowAsync(garageHandler)) != null)
+                await GarageMenu.ShowAsync(selectedGarage);
         }
     }
 }

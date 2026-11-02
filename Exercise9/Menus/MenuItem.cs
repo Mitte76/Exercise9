@@ -3,18 +3,23 @@ using System.Threading.Tasks;
 
 namespace Exercise9.Menus
 {
-    public class MenuItem(
+    public class MenuItem<T>(
         string text,
-        Menu? submenu = null,
+        T? value = null,
+        Menu<T>? submenu = null,
         Func<string?>? action = null,
         Func<Task<string?>>? taskAction = null,
         bool backUpWhenDone = false,
-        Func<Menu?>? submenuFactory = null
+        Func<Menu<T>?>? submenuFactory = null,
+        Func<T?>? valueFactory = null
     )
+        where T : class
     {
         public string Text { get; } = text;
-        public Menu? Submenu { get; } = submenu;
-        public Func<Menu?>? SubmenuFactory { get; } = submenuFactory;
+        public T? Value { get; } = value;
+        public Menu<T>? Submenu { get; } = submenu;
+        public Func<Menu<T>?>? SubmenuFactory { get; } = submenuFactory;
+        public Func<T?>? ValueFactory { get; } = valueFactory;
         public Func<string?>? Action { get; } = action;
         public Func<Task<string?>>? TaskAction { get; } = taskAction;
         public bool BackOutWhenDone { get; } = backUpWhenDone;
