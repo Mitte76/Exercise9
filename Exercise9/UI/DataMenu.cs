@@ -16,12 +16,12 @@ namespace Exercise9.UI
                 () =>
                     [
                         new MenuItem<GarageSummary>(
-                            "Save garage data to file",
-                            taskAction: () => SaveBackup(garageHandler)
-                        ),
-                        new MenuItem<GarageSummary>(
                             "Load garage data from file",
                             taskAction: () => LoadBackup(garageHandler)
+                        ),
+                        new MenuItem<GarageSummary>(
+                            "Save garage data to file",
+                            taskAction: () => SaveBackup(garageHandler)
                         ),
                         new MenuItem<GarageSummary>("Back"),
                     ]
