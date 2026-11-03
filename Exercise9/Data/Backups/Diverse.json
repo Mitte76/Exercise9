@@ -1,0 +1,2014 @@
+[
+  {
+    "Name": "GarageBil\u0026Motorcykel",
+    "Capacity": 200,
+    "VehicleTypes": [
+      3,
+      4
+    ],
+    "Vehicles": [
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 125,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Red",
+        "Brand": "Honda",
+        "LicensePlateNumber": "NLL27K",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "White",
+        "Brand": "Honda",
+        "LicensePlateNumber": "LUD04G",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Blue",
+        "Brand": "Saab",
+        "LicensePlateNumber": "CYO18E",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Green",
+        "Brand": "Honda",
+        "LicensePlateNumber": "LJL79E",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Blue",
+        "Brand": "Saab",
+        "LicensePlateNumber": "OFX59M",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Red",
+        "Brand": "Saab",
+        "LicensePlateNumber": "EDZ82P",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Green",
+        "Brand": "Saab",
+        "LicensePlateNumber": "DMG92Y",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "White",
+        "Brand": "Volvo",
+        "LicensePlateNumber": "REH914",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "White",
+        "Brand": "Volvo",
+        "LicensePlateNumber": "GGZ82J",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Blue",
+        "Brand": "Honda",
+        "LicensePlateNumber": "WCR58K",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Silver",
+        "Brand": "Toyota",
+        "LicensePlateNumber": "WMD88N",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Green",
+        "Brand": "Volvo",
+        "LicensePlateNumber": "FWW12T",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Black",
+        "Brand": "BMW",
+        "LicensePlateNumber": "RDY44U",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 250,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Red",
+        "Brand": "Kawasaki",
+        "LicensePlateNumber": "BLF19E",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Green",
+        "Brand": "BMW",
+        "LicensePlateNumber": "UGN253",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 600,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Green",
+        "Brand": "Kawasaki",
+        "LicensePlateNumber": "LAU24R",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 750,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Silver",
+        "Brand": "Suzuki",
+        "LicensePlateNumber": "XZC72D",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 1000,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Yellow",
+        "Brand": "Suzuki",
+        "LicensePlateNumber": "BAA69T",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 600,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Blue",
+        "Brand": "Yamaha",
+        "LicensePlateNumber": "WSR249",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Blue",
+        "Brand": "BMW",
+        "LicensePlateNumber": "UCC352",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Black",
+        "Brand": "Saab",
+        "LicensePlateNumber": "URF92U",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Silver",
+        "Brand": "BMW",
+        "LicensePlateNumber": "LMA53R",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 750,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Green",
+        "Brand": "Kawasaki",
+        "LicensePlateNumber": "WLU60T",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 750,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Green",
+        "Brand": "Kawasaki",
+        "LicensePlateNumber": "ARA03K",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Red",
+        "Brand": "Volvo",
+        "LicensePlateNumber": "GPK09Y",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Yellow",
+        "Brand": "BMW",
+        "LicensePlateNumber": "OGN035",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Silver",
+        "Brand": "BMW",
+        "LicensePlateNumber": "DZE36K",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Black",
+        "Brand": "Honda",
+        "LicensePlateNumber": "NCN115",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 750,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Green",
+        "Brand": "Yamaha",
+        "LicensePlateNumber": "LZX24M",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 125,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Blue",
+        "Brand": "Suzuki",
+        "LicensePlateNumber": "HAM01P",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Green",
+        "Brand": "BMW",
+        "LicensePlateNumber": "RRH501",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 250,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Green",
+        "Brand": "Yamaha",
+        "LicensePlateNumber": "TGX163",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "White",
+        "Brand": "Toyota",
+        "LicensePlateNumber": "WLO19D",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Silver",
+        "Brand": "Volvo",
+        "LicensePlateNumber": "XAY205",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Green",
+        "Brand": "Saab",
+        "LicensePlateNumber": "WEH43B",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 600,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Blue",
+        "Brand": "Suzuki",
+        "LicensePlateNumber": "KKN02J",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Yellow",
+        "Brand": "Saab",
+        "LicensePlateNumber": "NSJ37M",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 125,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Black",
+        "Brand": "Yamaha",
+        "LicensePlateNumber": "USF28J",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Yellow",
+        "Brand": "Honda",
+        "LicensePlateNumber": "PBE69A",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 250,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Blue",
+        "Brand": "Honda",
+        "LicensePlateNumber": "TWD00K",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 125,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Silver",
+        "Brand": "Honda",
+        "LicensePlateNumber": "LRG795",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 125,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Silver",
+        "Brand": "Kawasaki",
+        "LicensePlateNumber": "PTS96L",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Yellow",
+        "Brand": "Honda",
+        "LicensePlateNumber": "MWL298",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Red",
+        "Brand": "BMW",
+        "LicensePlateNumber": "FRW18D",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 1000,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Silver",
+        "Brand": "Honda",
+        "LicensePlateNumber": "XSX55D",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Blue",
+        "Brand": "Honda",
+        "LicensePlateNumber": "TBP95G",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Green",
+        "Brand": "Toyota",
+        "LicensePlateNumber": "NXW546",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "White",
+        "Brand": "Toyota",
+        "LicensePlateNumber": "LNS20T",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 250,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Black",
+        "Brand": "Yamaha",
+        "LicensePlateNumber": "LHS18N",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "White",
+        "Brand": "Honda",
+        "LicensePlateNumber": "CMS72G",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 1000,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Blue",
+        "Brand": "Yamaha",
+        "LicensePlateNumber": "WCD34T",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Red",
+        "Brand": "BMW",
+        "LicensePlateNumber": "DSN085",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 750,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Blue",
+        "Brand": "Kawasaki",
+        "LicensePlateNumber": "ZHO74Z",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 250,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Silver",
+        "Brand": "Suzuki",
+        "LicensePlateNumber": "SPM49K",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "White",
+        "Brand": "BMW",
+        "LicensePlateNumber": "UXE57D",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 250,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Yellow",
+        "Brand": "Honda",
+        "LicensePlateNumber": "WFZ30C",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Black",
+        "Brand": "BMW",
+        "LicensePlateNumber": "CZF02B",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 750,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Blue",
+        "Brand": "Kawasaki",
+        "LicensePlateNumber": "STB29J",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 750,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Yellow",
+        "Brand": "Kawasaki",
+        "LicensePlateNumber": "YFJ56U",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Green",
+        "Brand": "Toyota",
+        "LicensePlateNumber": "SGR56L",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Yellow",
+        "Brand": "Toyota",
+        "LicensePlateNumber": "XFR60T",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Blue",
+        "Brand": "Saab",
+        "LicensePlateNumber": "LCZ210",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 600,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Yellow",
+        "Brand": "Yamaha",
+        "LicensePlateNumber": "WJJ43B",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 600,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Red",
+        "Brand": "Yamaha",
+        "LicensePlateNumber": "JTG73B",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Red",
+        "Brand": "BMW",
+        "LicensePlateNumber": "RLF783",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Blue",
+        "Brand": "Saab",
+        "LicensePlateNumber": "CCR96D",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 600,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Yellow",
+        "Brand": "Honda",
+        "LicensePlateNumber": "BLJ121",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Black",
+        "Brand": "Saab",
+        "LicensePlateNumber": "EHN23N",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "White",
+        "Brand": "Saab",
+        "LicensePlateNumber": "FSY92T",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Blue",
+        "Brand": "Toyota",
+        "LicensePlateNumber": "SRC89A",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 250,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Red",
+        "Brand": "Suzuki",
+        "LicensePlateNumber": "SJO09R",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Green",
+        "Brand": "Saab",
+        "LicensePlateNumber": "LYN08F",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Black",
+        "Brand": "Honda",
+        "LicensePlateNumber": "PUT137",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Red",
+        "Brand": "Volvo",
+        "LicensePlateNumber": "WKR02P",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Silver",
+        "Brand": "Volvo",
+        "LicensePlateNumber": "HHN119",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Green",
+        "Brand": "Toyota",
+        "LicensePlateNumber": "LFB829",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Green",
+        "Brand": "BMW",
+        "LicensePlateNumber": "EWS121",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 250,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Red",
+        "Brand": "Kawasaki",
+        "LicensePlateNumber": "DJD47R",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "White",
+        "Brand": "Saab",
+        "LicensePlateNumber": "WKX72S",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 125,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Silver",
+        "Brand": "Honda",
+        "LicensePlateNumber": "FAF905",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 250,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Yellow",
+        "Brand": "Suzuki",
+        "LicensePlateNumber": "EML192",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Black",
+        "Brand": "Saab",
+        "LicensePlateNumber": "GME18U",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 250,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Green",
+        "Brand": "Yamaha",
+        "LicensePlateNumber": "ALL32A",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 125,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Green",
+        "Brand": "Honda",
+        "LicensePlateNumber": "YTO35W",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 250,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "White",
+        "Brand": "Suzuki",
+        "LicensePlateNumber": "NPF218",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 1000,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Silver",
+        "Brand": "Yamaha",
+        "LicensePlateNumber": "GJY271",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 600,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Red",
+        "Brand": "Honda",
+        "LicensePlateNumber": "HSL96Y",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "White",
+        "Brand": "Honda",
+        "LicensePlateNumber": "ZCP12Y",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "White",
+        "Brand": "Toyota",
+        "LicensePlateNumber": "OPT11Z",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Red",
+        "Brand": "Volvo",
+        "LicensePlateNumber": "BJB207",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Red",
+        "Brand": "Saab",
+        "LicensePlateNumber": "CBC99M",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Blue",
+        "Brand": "BMW",
+        "LicensePlateNumber": "DNW507",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 600,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Red",
+        "Brand": "Suzuki",
+        "LicensePlateNumber": "LBH04C",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "White",
+        "Brand": "Honda",
+        "LicensePlateNumber": "TEK31G",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 750,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Blue",
+        "Brand": "Suzuki",
+        "LicensePlateNumber": "LEN576",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 125,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Blue",
+        "Brand": "Kawasaki",
+        "LicensePlateNumber": "KHM56M",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Red",
+        "Brand": "Toyota",
+        "LicensePlateNumber": "ZOD05D",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 1000,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Black",
+        "Brand": "Honda",
+        "LicensePlateNumber": "EMX773",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Silver",
+        "Brand": "Volvo",
+        "LicensePlateNumber": "GND920",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Black",
+        "Brand": "Volvo",
+        "LicensePlateNumber": "SCG08B",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "White",
+        "Brand": "Toyota",
+        "LicensePlateNumber": "YFG91W",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "White",
+        "Brand": "Saab",
+        "LicensePlateNumber": "ODH27H",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 750,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Red",
+        "Brand": "Honda",
+        "LicensePlateNumber": "JTX30P",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 125,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Green",
+        "Brand": "Kawasaki",
+        "LicensePlateNumber": "LBP31T",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Red",
+        "Brand": "BMW",
+        "LicensePlateNumber": "FGO777",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 250,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "White",
+        "Brand": "Kawasaki",
+        "LicensePlateNumber": "UOT97G",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 600,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Red",
+        "Brand": "Kawasaki",
+        "LicensePlateNumber": "DDG46S",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 250,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Blue",
+        "Brand": "Honda",
+        "LicensePlateNumber": "KOX57S",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 250,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Silver",
+        "Brand": "Yamaha",
+        "LicensePlateNumber": "KGN01E",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 250,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "White",
+        "Brand": "Suzuki",
+        "LicensePlateNumber": "WZC59R",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 750,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Blue",
+        "Brand": "Suzuki",
+        "LicensePlateNumber": "LBN49G",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 750,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Red",
+        "Brand": "Honda",
+        "LicensePlateNumber": "BYT74E",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Silver",
+        "Brand": "Toyota",
+        "LicensePlateNumber": "HDD98B",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 750,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Silver",
+        "Brand": "Kawasaki",
+        "LicensePlateNumber": "NSB73C",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 1000,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Blue",
+        "Brand": "Honda",
+        "LicensePlateNumber": "KYG52T",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Green",
+        "Brand": "Saab",
+        "LicensePlateNumber": "CJJ05H",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Blue",
+        "Brand": "Toyota",
+        "LicensePlateNumber": "CYW81L",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 600,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Yellow",
+        "Brand": "Honda",
+        "LicensePlateNumber": "LGY15A",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "White",
+        "Brand": "Toyota",
+        "LicensePlateNumber": "KYX75J",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 1000,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "White",
+        "Brand": "Honda",
+        "LicensePlateNumber": "JKD72G",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Black",
+        "Brand": "Volvo",
+        "LicensePlateNumber": "LUR42D",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Black",
+        "Brand": "BMW",
+        "LicensePlateNumber": "UNX41G",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 250,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Black",
+        "Brand": "Honda",
+        "LicensePlateNumber": "ART57P",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Green",
+        "Brand": "BMW",
+        "LicensePlateNumber": "DWK00S",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Yellow",
+        "Brand": "Honda",
+        "LicensePlateNumber": "LBF70P",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Yellow",
+        "Brand": "Toyota",
+        "LicensePlateNumber": "PPC35Y",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Green",
+        "Brand": "BMW",
+        "LicensePlateNumber": "XUY648",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 750,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Silver",
+        "Brand": "Kawasaki",
+        "LicensePlateNumber": "OKC70D",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Black",
+        "Brand": "Saab",
+        "LicensePlateNumber": "MPO71G",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Green",
+        "Brand": "Toyota",
+        "LicensePlateNumber": "AKB306",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 250,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Black",
+        "Brand": "Honda",
+        "LicensePlateNumber": "MPD591",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Black",
+        "Brand": "BMW",
+        "LicensePlateNumber": "KXF11U",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "White",
+        "Brand": "Honda",
+        "LicensePlateNumber": "CRD79A",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "White",
+        "Brand": "Toyota",
+        "LicensePlateNumber": "MZA30G",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Blue",
+        "Brand": "BMW",
+        "LicensePlateNumber": "AUG45A",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 750,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Yellow",
+        "Brand": "Honda",
+        "LicensePlateNumber": "BYT93Z",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Red",
+        "Brand": "Honda",
+        "LicensePlateNumber": "UGT120",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Black",
+        "Brand": "Toyota",
+        "LicensePlateNumber": "LUZ67Y",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      }
+    ]
+  },
+  {
+    "Name": "Hangar",
+    "Capacity": 20,
+    "VehicleTypes": [
+      0
+    ],
+    "Vehicles": [
+      {
+        "type": "Airplane",
+        "NumberOfEngines": 2,
+        "ParkingSpaceRequirement": 3,
+        "Color": "Black",
+        "Brand": "Boeing",
+        "LicensePlateNumber": "HMN79B",
+        "NumberOfWheels": 6
+      },
+      {
+        "type": "Airplane",
+        "NumberOfEngines": 1,
+        "ParkingSpaceRequirement": 3,
+        "Color": "Silver",
+        "Brand": "Airbus",
+        "LicensePlateNumber": "SBP55N",
+        "NumberOfWheels": 6
+      },
+      {
+        "type": "Airplane",
+        "NumberOfEngines": 4,
+        "ParkingSpaceRequirement": 3,
+        "Color": "Red",
+        "Brand": "Embraer",
+        "LicensePlateNumber": "NCZ95F",
+        "NumberOfWheels": 6
+      },
+      {
+        "type": "Airplane",
+        "NumberOfEngines": 1,
+        "ParkingSpaceRequirement": 3,
+        "Color": "Blue",
+        "Brand": "Embraer",
+        "LicensePlateNumber": "HRF302",
+        "NumberOfWheels": 6
+      }
+    ]
+  },
+  {
+    "Name": "AlltTill\u00E5tet",
+    "Capacity": 200,
+    "VehicleTypes": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "Vehicles": [
+      {
+        "type": "Boat",
+        "Length": 4.5,
+        "ParkingSpaceRequirement": 2,
+        "Color": "Red",
+        "Brand": "SeaRay",
+        "LicensePlateNumber": "YXH974",
+        "NumberOfWheels": 0
+      },
+      {
+        "type": "Boat",
+        "Length": 10,
+        "ParkingSpaceRequirement": 2,
+        "Color": "Blue",
+        "Brand": "SeaRay",
+        "LicensePlateNumber": "HED83D",
+        "NumberOfWheels": 0
+      },
+      {
+        "type": "Bus",
+        "NumberOfSeats": 60,
+        "ParkingSpaceRequirement": 2,
+        "Color": "Green",
+        "Brand": "Iveco",
+        "LicensePlateNumber": "OHN08J",
+        "NumberOfWheels": 6
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Yellow",
+        "Brand": "BMW",
+        "LicensePlateNumber": "TNF426",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 600,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "White",
+        "Brand": "Kawasaki",
+        "LicensePlateNumber": "NAB16Z",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Black",
+        "Brand": "BMW",
+        "LicensePlateNumber": "XMK02P",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 750,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Red",
+        "Brand": "Suzuki",
+        "LicensePlateNumber": "GKN323",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Boat",
+        "Length": 4.5,
+        "ParkingSpaceRequirement": 2,
+        "Color": "Red",
+        "Brand": "Beneteau",
+        "LicensePlateNumber": "ARW510",
+        "NumberOfWheels": 0
+      },
+      {
+        "type": "Boat",
+        "Length": 8,
+        "ParkingSpaceRequirement": 2,
+        "Color": "Yellow",
+        "Brand": "Buster",
+        "LicensePlateNumber": "DJH055",
+        "NumberOfWheels": 0
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 125,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Black",
+        "Brand": "Yamaha",
+        "LicensePlateNumber": "XUS639",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 125,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Silver",
+        "Brand": "Yamaha",
+        "LicensePlateNumber": "HPJ858",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 125,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Silver",
+        "Brand": "Kawasaki",
+        "LicensePlateNumber": "DNZ033",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Bus",
+        "NumberOfSeats": 50,
+        "ParkingSpaceRequirement": 2,
+        "Color": "Yellow",
+        "Brand": "Scania",
+        "LicensePlateNumber": "DWX88G",
+        "NumberOfWheels": 6
+      },
+      {
+        "type": "Boat",
+        "Length": 6.5,
+        "ParkingSpaceRequirement": 2,
+        "Color": "White",
+        "Brand": "Bayliner",
+        "LicensePlateNumber": "MHJ97J",
+        "NumberOfWheels": 0
+      },
+      {
+        "type": "Bus",
+        "NumberOfSeats": 40,
+        "ParkingSpaceRequirement": 2,
+        "Color": "Red",
+        "Brand": "Iveco",
+        "LicensePlateNumber": "WDS97A",
+        "NumberOfWheels": 6
+      },
+      {
+        "type": "Airplane",
+        "NumberOfEngines": 1,
+        "ParkingSpaceRequirement": 3,
+        "Color": "Green",
+        "Brand": "Embraer",
+        "LicensePlateNumber": "MGU464",
+        "NumberOfWheels": 6
+      },
+      {
+        "type": "Bus",
+        "NumberOfSeats": 30,
+        "ParkingSpaceRequirement": 2,
+        "Color": "Blue",
+        "Brand": "Iveco",
+        "LicensePlateNumber": "XUC21C",
+        "NumberOfWheels": 6
+      },
+      {
+        "type": "Airplane",
+        "NumberOfEngines": 1,
+        "ParkingSpaceRequirement": 3,
+        "Color": "Blue",
+        "Brand": "Boeing",
+        "LicensePlateNumber": "AMF03F",
+        "NumberOfWheels": 6
+      },
+      {
+        "type": "Boat",
+        "Length": 4.5,
+        "ParkingSpaceRequirement": 2,
+        "Color": "Red",
+        "Brand": "Bayliner",
+        "LicensePlateNumber": "PCE45J",
+        "NumberOfWheels": 0
+      },
+      {
+        "type": "Boat",
+        "Length": 4.5,
+        "ParkingSpaceRequirement": 2,
+        "Color": "Yellow",
+        "Brand": "SeaRay",
+        "LicensePlateNumber": "YDO106",
+        "NumberOfWheels": 0
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Silver",
+        "Brand": "Honda",
+        "LicensePlateNumber": "RWL187",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Blue",
+        "Brand": "Toyota",
+        "LicensePlateNumber": "BSM61J",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Bus",
+        "NumberOfSeats": 30,
+        "ParkingSpaceRequirement": 2,
+        "Color": "Yellow",
+        "Brand": "Volvo",
+        "LicensePlateNumber": "ZTJ030",
+        "NumberOfWheels": 6
+      },
+      {
+        "type": "Boat",
+        "Length": 8,
+        "ParkingSpaceRequirement": 2,
+        "Color": "Red",
+        "Brand": "Buster",
+        "LicensePlateNumber": "UWW252",
+        "NumberOfWheels": 0
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Green",
+        "Brand": "Honda",
+        "LicensePlateNumber": "MEF031",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 600,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Yellow",
+        "Brand": "Yamaha",
+        "LicensePlateNumber": "ETY56B",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 750,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Green",
+        "Brand": "Honda",
+        "LicensePlateNumber": "XBS09G",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Boat",
+        "Length": 6.5,
+        "ParkingSpaceRequirement": 2,
+        "Color": "Red",
+        "Brand": "SeaRay",
+        "LicensePlateNumber": "PMB01E",
+        "NumberOfWheels": 0
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Green",
+        "Brand": "BMW",
+        "LicensePlateNumber": "CRN272",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 1000,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Black",
+        "Brand": "Suzuki",
+        "LicensePlateNumber": "MGY119",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Bus",
+        "NumberOfSeats": 20,
+        "ParkingSpaceRequirement": 2,
+        "Color": "White",
+        "Brand": "Iveco",
+        "LicensePlateNumber": "FXT392",
+        "NumberOfWheels": 6
+      },
+      {
+        "type": "Boat",
+        "Length": 6.5,
+        "ParkingSpaceRequirement": 2,
+        "Color": "Black",
+        "Brand": "SeaRay",
+        "LicensePlateNumber": "OZA277",
+        "NumberOfWheels": 0
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Silver",
+        "Brand": "Volvo",
+        "LicensePlateNumber": "DAP38H",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Airplane",
+        "NumberOfEngines": 2,
+        "ParkingSpaceRequirement": 3,
+        "Color": "Silver",
+        "Brand": "Airbus",
+        "LicensePlateNumber": "WTJ974",
+        "NumberOfWheels": 6
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Silver",
+        "Brand": "Saab",
+        "LicensePlateNumber": "BKU133",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Boat",
+        "Length": 8,
+        "ParkingSpaceRequirement": 2,
+        "Color": "Yellow",
+        "Brand": "SeaRay",
+        "LicensePlateNumber": "LGE77D",
+        "NumberOfWheels": 0
+      },
+      {
+        "type": "Boat",
+        "Length": 4.5,
+        "ParkingSpaceRequirement": 2,
+        "Color": "Yellow",
+        "Brand": "Buster",
+        "LicensePlateNumber": "ZHM31J",
+        "NumberOfWheels": 0
+      },
+      {
+        "type": "Boat",
+        "Length": 10,
+        "ParkingSpaceRequirement": 2,
+        "Color": "Silver",
+        "Brand": "Buster",
+        "LicensePlateNumber": "EGD79F",
+        "NumberOfWheels": 0
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 600,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Green",
+        "Brand": "Honda",
+        "LicensePlateNumber": "OEU79L",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 250,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "White",
+        "Brand": "Kawasaki",
+        "LicensePlateNumber": "RAN49U",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 125,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "White",
+        "Brand": "Suzuki",
+        "LicensePlateNumber": "JDG63Y",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Yellow",
+        "Brand": "BMW",
+        "LicensePlateNumber": "LUA010",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Airplane",
+        "NumberOfEngines": 1,
+        "ParkingSpaceRequirement": 3,
+        "Color": "White",
+        "Brand": "Embraer",
+        "LicensePlateNumber": "JDN01E",
+        "NumberOfWheels": 6
+      },
+      {
+        "type": "Bus",
+        "NumberOfSeats": 40,
+        "ParkingSpaceRequirement": 2,
+        "Color": "White",
+        "Brand": "Volvo",
+        "LicensePlateNumber": "JPG85R",
+        "NumberOfWheels": 6
+      },
+      {
+        "type": "Boat",
+        "Length": 8,
+        "ParkingSpaceRequirement": 2,
+        "Color": "Yellow",
+        "Brand": "SeaRay",
+        "LicensePlateNumber": "GBS73K",
+        "NumberOfWheels": 0
+      },
+      {
+        "type": "Boat",
+        "Length": 8,
+        "ParkingSpaceRequirement": 2,
+        "Color": "Yellow",
+        "Brand": "Buster",
+        "LicensePlateNumber": "UGJ12O",
+        "NumberOfWheels": 0
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 250,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Silver",
+        "Brand": "Suzuki",
+        "LicensePlateNumber": "LKH303",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Boat",
+        "Length": 6.5,
+        "ParkingSpaceRequirement": 2,
+        "Color": "Yellow",
+        "Brand": "SeaRay",
+        "LicensePlateNumber": "NBL72S",
+        "NumberOfWheels": 0
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 750,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Blue",
+        "Brand": "Yamaha",
+        "LicensePlateNumber": "TJC431",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Airplane",
+        "NumberOfEngines": 4,
+        "ParkingSpaceRequirement": 3,
+        "Color": "Green",
+        "Brand": "Boeing",
+        "LicensePlateNumber": "UGL083",
+        "NumberOfWheels": 6
+      },
+      {
+        "type": "Airplane",
+        "NumberOfEngines": 4,
+        "ParkingSpaceRequirement": 3,
+        "Color": "Silver",
+        "Brand": "Airbus",
+        "LicensePlateNumber": "RKR32H",
+        "NumberOfWheels": 6
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Silver",
+        "Brand": "Toyota",
+        "LicensePlateNumber": "XOS67O",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Airplane",
+        "NumberOfEngines": 2,
+        "ParkingSpaceRequirement": 3,
+        "Color": "Red",
+        "Brand": "Boeing",
+        "LicensePlateNumber": "MFX31M",
+        "NumberOfWheels": 6
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 750,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Yellow",
+        "Brand": "Yamaha",
+        "LicensePlateNumber": "BRA47H",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Bus",
+        "NumberOfSeats": 20,
+        "ParkingSpaceRequirement": 2,
+        "Color": "Yellow",
+        "Brand": "Iveco",
+        "LicensePlateNumber": "YNL24U",
+        "NumberOfWheels": 6
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 1000,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Silver",
+        "Brand": "Honda",
+        "LicensePlateNumber": "BPW38G",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Bus",
+        "NumberOfSeats": 50,
+        "ParkingSpaceRequirement": 2,
+        "Color": "Silver",
+        "Brand": "Scania",
+        "LicensePlateNumber": "SYW699",
+        "NumberOfWheels": 6
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 125,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Green",
+        "Brand": "Suzuki",
+        "LicensePlateNumber": "OFK25L",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 250,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "White",
+        "Brand": "Honda",
+        "LicensePlateNumber": "RFU308",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 250,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Black",
+        "Brand": "Honda",
+        "LicensePlateNumber": "PFH998",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Boat",
+        "Length": 8,
+        "ParkingSpaceRequirement": 2,
+        "Color": "Blue",
+        "Brand": "Buster",
+        "LicensePlateNumber": "YYA66H",
+        "NumberOfWheels": 0
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 250,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Silver",
+        "Brand": "Honda",
+        "LicensePlateNumber": "OWP92W",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 1000,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Yellow",
+        "Brand": "Honda",
+        "LicensePlateNumber": "ZXS18B",
+        "NumberOfWheels": 2
+      },
+      {
+        "type": "Car",
+        "FuelType": 0,
+        "Color": "Red",
+        "Brand": "Volvo",
+        "LicensePlateNumber": "UPY94N",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Car",
+        "FuelType": 1,
+        "Color": "Black",
+        "Brand": "Toyota",
+        "LicensePlateNumber": "SYX412",
+        "NumberOfWheels": 4,
+        "ParkingSpaceRequirement": 1
+      },
+      {
+        "type": "Airplane",
+        "NumberOfEngines": 2,
+        "ParkingSpaceRequirement": 3,
+        "Color": "Black",
+        "Brand": "Cessna",
+        "LicensePlateNumber": "ECR85P",
+        "NumberOfWheels": 6
+      },
+      {
+        "type": "Airplane",
+        "NumberOfEngines": 4,
+        "ParkingSpaceRequirement": 3,
+        "Color": "Black",
+        "Brand": "Embraer",
+        "LicensePlateNumber": "NUS63K",
+        "NumberOfWheels": 6
+      },
+      {
+        "type": "Bus",
+        "NumberOfSeats": 50,
+        "ParkingSpaceRequirement": 2,
+        "Color": "White",
+        "Brand": "Scania",
+        "LicensePlateNumber": "DMY92Y",
+        "NumberOfWheels": 6
+      },
+      {
+        "type": "Motorcycle",
+        "CylinderVolume": 1000,
+        "ParkingSpaceRequirement": 0.3333333333333333333333333333,
+        "Color": "Black",
+        "Brand": "Suzuki",
+        "LicensePlateNumber": "LRZ83P",
+        "NumberOfWheels": 2
+      }
+    ]
+  },
+  {
+    "Name": "Marina",
+    "Capacity": 30,
+    "VehicleTypes": [
+      1
+    ],
+    "Vehicles": [
+      {
+        "type": "Boat",
+        "Length": 4.5,
+        "ParkingSpaceRequirement": 2,
+        "Color": "Red",
+        "Brand": "Buster",
+        "LicensePlateNumber": "GMZ75B",
+        "NumberOfWheels": 0
+      },
+      {
+        "type": "Boat",
+        "Length": 4.5,
+        "ParkingSpaceRequirement": 2,
+        "Color": "Blue",
+        "Brand": "SeaRay",
+        "LicensePlateNumber": "BZB75G",
+        "NumberOfWheels": 0
+      },
+      {
+        "type": "Boat",
+        "Length": 10,
+        "ParkingSpaceRequirement": 2,
+        "Color": "White",
+        "Brand": "Buster",
+        "LicensePlateNumber": "WPD582",
+        "NumberOfWheels": 0
+      },
+      {
+        "type": "Boat",
+        "Length": 4.5,
+        "ParkingSpaceRequirement": 2,
+        "Color": "White",
+        "Brand": "Buster",
+        "LicensePlateNumber": "GGH368",
+        "NumberOfWheels": 0
+      },
+      {
+        "type": "Boat",
+        "Length": 4.5,
+        "ParkingSpaceRequirement": 2,
+        "Color": "Green",
+        "Brand": "Bayliner",
+        "LicensePlateNumber": "JDH23Z",
+        "NumberOfWheels": 0
+      },
+      {
+        "type": "Boat",
+        "Length": 8,
+        "ParkingSpaceRequirement": 2,
+        "Color": "Silver",
+        "Brand": "Bayliner",
+        "LicensePlateNumber": "EXX097",
+        "NumberOfWheels": 0
+      },
+      {
+        "type": "Boat",
+        "Length": 10,
+        "ParkingSpaceRequirement": 2,
+        "Color": "Blue",
+        "Brand": "Buster",
+        "LicensePlateNumber": "YJU44X",
+        "NumberOfWheels": 0
+      },
+      {
+        "type": "Boat",
+        "Length": 6.5,
+        "ParkingSpaceRequirement": 2,
+        "Color": "Yellow",
+        "Brand": "Beneteau",
+        "LicensePlateNumber": "JUJ444",
+        "NumberOfWheels": 0
+      }
+    ]
+  }
+]
