@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Exercise9.Menus
+namespace Exercise9.UI.Menus
 {
     public class Menu<T>(
         Func<string> menuName,
         Func<MenuItem<T>[]> menuItems,
         bool isMainMenu = false,
-        Func<string>? extra = null
+        Func<string>? extra = null,
+        int trailingItemsToPreserve = 0
     )
         where T : class
     {
@@ -18,6 +19,7 @@ namespace Exercise9.Menus
         private readonly Func<MenuItem<T>[]> _items = menuItems;
 
         private readonly bool _isMainMenu = isMainMenu;
+        private readonly int _trailingItemsToPreserve = trailingItemsToPreserve;
 
         private string currentInput = "";
         private string? _message;
@@ -46,6 +48,7 @@ namespace Exercise9.Menus
         public async Task<T?> ShowMenu()
         {
             int selectedIndex = 0;
+            int? previousItemCount = null;
 
             while (true)
             {
@@ -53,12 +56,25 @@ namespace Exercise9.Menus
                 if (items.Length == 0)
                     return null;
 
+                if (_trailingItemsToPreserve > 0 && previousItemCount.HasValue)
+                    selectedIndex = CalculateSelectedIndex(
+                        selectedIndex,
+                        previousItemCount.Value,
+                        items,
+                        _trailingItemsToPreserve
+                    );
+                previousItemCount = items.Length;
+
                 if (
                     selectedIndex < 0
                     || selectedIndex >= items.Length
                     || !items[selectedIndex].IsEnabled
                 )
-                    selectedIndex = FindEnabledIndex(items, Math.Max(selectedIndex, 0), 1);
+                    selectedIndex = FindEnabledIndex(
+                        items,
+                        Math.Clamp(selectedIndex, 0, items.Length - 1),
+                        1
+                    );
                 if (selectedIndex < 0)
                     return null;
 
@@ -167,14 +183,50 @@ namespace Exercise9.Menus
             else if (selected)
             {
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.BackgroundColor = ConsoleColor.DarkBlue;
             }
             else
                 Console.ForegroundColor = ConsoleColor.Gray;
 
             Console.Write($"{number}.[{(selected ? "#" : " ")}] ");
+            if (selected)
+            {
+                Console.BackgroundColor = ConsoleColor.DarkBlue;
+            }
             Console.WriteLine(text);
             Console.ResetColor();
+        }
+
+        private static int CalculateSelectedIndex(
+            int selectedIndex,
+            int previousItemCount,
+            MenuItem<T>[] items,
+            int trailingItemsToPreserve
+        )
+        {
+            if (
+                previousItemCount < trailingItemsToPreserve
+                || items.Length < trailingItemsToPreserve
+            )
+                return Math.Clamp(selectedIndex, 0, items.Length - 1);
+
+            int previousOptionCount = previousItemCount - trailingItemsToPreserve;
+            int currentOptionCount = items.Length - trailingItemsToPreserve;
+            if (selectedIndex < previousOptionCount)
+                return currentOptionCount > 0
+                    ? Math.Min(selectedIndex, currentOptionCount - 1)
+                    : 0;
+
+            int positionFromEnd = previousItemCount - selectedIndex;
+            int newIndex = items.Length - positionFromEnd;
+            if (
+                trailingItemsToPreserve >= 3
+                && positionFromEnd == 2
+                && !items[newIndex].IsEnabled
+                && items[newIndex - 1].IsEnabled
+            )
+                return newIndex - 1;
+
+            return newIndex;
         }
 
         private static int FindEnabledIndex(MenuItem<T>[] items, int startIndex, int direction)

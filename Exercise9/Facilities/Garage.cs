@@ -9,7 +9,7 @@ namespace Exercise9.Facilities
     public class Garage<T> : IEnumerable<T>
         where T : Vehicle
     {
-        public const int MaximumCapacity = 100_000;
+        public const int MaximumCapacity = 10000;
 
         private readonly T?[] vehicles;
         private readonly ParkingSpot[] parkingSpots;
@@ -27,20 +27,19 @@ namespace Exercise9.Facilities
             Name = name;
             Capacity = capacity;
             VehicleTypes = Array.AsReadOnly(vehicleTypes.ToArray());
-            vehicles = new T?[checked(capacity * ParkingSpot.UnitsPerSpace)];
+            vehicles = new T?[capacity * ParkingSpot.UnitsPerSpace];
             parkingSpots = Enumerable
                 .Range(1, capacity)
                 .Select(position => new ParkingSpot(position))
                 .ToArray();
-            ParkingSpots = Array.AsReadOnly(parkingSpots);
         }
 
         public string Name { get; }
         public int Capacity { get; }
         public IReadOnlyList<VehicleType> VehicleTypes { get; }
-        public IReadOnlyList<ParkingSpot> ParkingSpots { get; }
         public int AvailableParkingSpaceUnits => parkingSpots.Sum(spot => spot.AvailableUnits);
-        public int OccupiedParkingSpaceUnits => Capacity * ParkingSpot.UnitsPerSpace - AvailableParkingSpaceUnits;
+        public int OccupiedParkingSpaceUnits =>
+            Capacity * ParkingSpot.UnitsPerSpace - AvailableParkingSpaceUnits;
 
         public bool HasSpaceFor(VehicleType vehicleType)
         {
@@ -51,7 +50,8 @@ namespace Exercise9.Facilities
         public bool HasSpaceFor(T vehicle)
         {
             ArgumentNullException.ThrowIfNull(vehicle);
-            return Accepts(vehicle) && GetRequiredParkingSpaceUnits(vehicle) <= AvailableParkingSpaceUnits;
+            return Accepts(vehicle)
+                && GetRequiredParkingSpaceUnits(vehicle) <= AvailableParkingSpaceUnits;
         }
 
         public bool TryParkVehicle(T vehicle)
@@ -73,7 +73,7 @@ namespace Exercise9.Facilities
         internal T?[] GetVehicleSlots()
         {
             int lastOccupiedSlot = Array.FindLastIndex(vehicles, vehicle => vehicle is not null);
-            return lastOccupiedSlot < 0 ? [] : vehicles[.. (lastOccupiedSlot + 1)];
+            return lastOccupiedSlot < 0 ? [] : vehicles[..(lastOccupiedSlot + 1)];
         }
 
         internal bool TryParkVehicleAt(int position, T vehicle)
@@ -111,9 +111,7 @@ namespace Exercise9.Facilities
 
         private static int GetParkingSpaceUnits(VehicleType vehicleType)
         {
-            return ConvertParkingSpaceRequirementToUnits(
-                vehicleType.GetParkingSpaceRequirement()
-            );
+            return ConvertParkingSpaceRequirementToUnits(vehicleType.GetParkingSpaceRequirement());
         }
 
         private static int GetRequiredParkingSpaceUnits(T vehicle)

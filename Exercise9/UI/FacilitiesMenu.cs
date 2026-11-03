@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
 using Exercise9.Facilities;
-using Exercise9.Menus;
 using Exercise9.Services;
+using Exercise9.UI.Menus;
 using Exercise9.Vehicles;
 
 namespace Exercise9.UI
@@ -23,13 +23,13 @@ namespace Exercise9.UI
             return new Menu<GarageSummary>(
                 () => "Create Facility",
                 () =>
-                [
-                    new MenuItem<GarageSummary>(
-                        "Create garage",
-                        valueFactory: () => CreateGarage(garageHandler)
-                    ),
-                    new MenuItem<GarageSummary>("Back")
-                ]
+                    [
+                        new MenuItem<GarageSummary>(
+                            "Create garage",
+                            valueFactory: () => CreateGarage(garageHandler)
+                        ),
+                        new MenuItem<GarageSummary>("Back"),
+                    ]
             );
         }
 
@@ -70,7 +70,10 @@ namespace Exercise9.UI
                 {
                     Console.Write("Populate the garage with random vehicles now? (Y/N): ");
                     string? populate = Console.ReadLine();
-                    if (populate == null || populate.Trim().Equals("N", StringComparison.OrdinalIgnoreCase))
+                    if (
+                        populate == null
+                        || populate.Trim().Equals("N", StringComparison.OrdinalIgnoreCase)
+                    )
                         break;
 
                     if (populate.Trim().Equals("Y", StringComparison.OrdinalIgnoreCase))
@@ -109,7 +112,8 @@ namespace Exercise9.UI
                 switch (key.Key)
                 {
                     case ConsoleKey.UpArrow:
-                        selectedIndex = (selectedIndex - 1 + vehicleTypes.Length) % vehicleTypes.Length;
+                        selectedIndex =
+                            (selectedIndex - 1 + vehicleTypes.Length) % vehicleTypes.Length;
                         break;
                     case ConsoleKey.DownArrow:
                         selectedIndex = (selectedIndex + 1) % vehicleTypes.Length;

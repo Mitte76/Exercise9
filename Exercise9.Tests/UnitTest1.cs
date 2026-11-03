@@ -57,7 +57,6 @@ public class GarageTests
         Assert.True(garage.TryParkVehicle(third));
         Assert.False(garage.TryParkVehicle(fourth));
         Assert.Equal(0, garage.AvailableParkingSpaceUnits);
-        Assert.Equal(3, garage.ParkingSpots[0].Vehicles.Count);
         Assert.Equal(3, garage.Count());
     }
 
@@ -117,10 +116,7 @@ public class GarageTests
         Car car = CreateCar("ABC123");
         garage.TryParkVehicle(car);
 
-        bool replaced = garage.TryReplaceVehicle(
-            1,
-            new Boat("Buster", "Blue", "BOA001", 0, 6m)
-        );
+        bool replaced = garage.TryReplaceVehicle(1, new Boat("Buster", "Blue", "BOA001", 0, 6m));
 
         Assert.False(replaced);
         Assert.Same(car, Assert.Single(garage));

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Exercise9.Facilities;
-using Exercise9.Menus;
 using Exercise9.Services;
+using Exercise9.UI.Menus;
 using Exercise9.Vehicles;
 
 namespace Exercise9.UI
@@ -152,24 +152,25 @@ namespace Exercise9.UI
                             )
                         );
 
-                        if (currentPage < totalPages - 1)
-                            items.Add(
-                                new MenuItem<ParkedVehicleSummary>(
-                                    "Next page",
-                                    action: () =>
-                                    {
-                                        currentPage++;
-                                        return null;
-                                    }
-                                )
-                            );
+                        items.Add(
+                            new MenuItem<ParkedVehicleSummary>(
+                                "Next page",
+                                action: () =>
+                                {
+                                    currentPage++;
+                                    return null;
+                                },
+                                isEnabled: currentPage != totalPages - 1
+                            )
+                        );
 
                         items.Add(new MenuItem<ParkedVehicleSummary>("Back"));
                         return [.. items];
                     },
                     extra: () =>
                         $"Page {currentPage + 1} of {totalPages}"
-                        + (actionMessage == null ? "" : $" | {actionMessage}")
+                        + (actionMessage == null ? "" : $" | {actionMessage}"),
+                    trailingItemsToPreserve: 3
                 ).ShowMenu();
 
                 if (selectedVehicle == null)
@@ -228,14 +229,14 @@ namespace Exercise9.UI
             [
                 "Brand",
                 "Color",
-                "LicensePlateNumber",
-                "VehicleType",
-                "NumberOfWheels",
-                "FuelType",
                 "CylinderVolume",
+                "FuelType",
                 "Length",
+                "LicensePlateNumber",
                 "NumberOfEngines",
                 "NumberOfSeats",
+                "NumberOfWheels",
+                "VehicleType",
             ];
             Dictionary<string, List<string>> criteria = new(StringComparer.OrdinalIgnoreCase);
 
@@ -347,17 +348,33 @@ namespace Exercise9.UI
                     )
                     .ToArray();
 
-                Console.WriteLine("\nAvailable criteria:");
+                Console.WriteLine("\n\nAvailable criteria:\n");
+                const int maxSuggestionLineWidth = 60;
+                int suggestionLineWidth = 0;
                 foreach (string suggestion in suggestions)
                 {
+                    string displayText = suggestion + " ";
+                    if (
+                        suggestionLineWidth > 0
+                        && suggestionLineWidth + displayText.Length > maxSuggestionLineWidth
+                    )
+                    {
+                        Console.WriteLine();
+                        suggestionLineWidth = 0;
+                    }
+
                     bool isSelected = input.StartsWith(
                         suggestion + ": ",
                         StringComparison.OrdinalIgnoreCase
                     );
-                    Console.ForegroundColor = isSelected ? ConsoleColor.Green : ConsoleColor.Gray;
-                    Console.Write(suggestion + " ");
+                    Console.ForegroundColor = isSelected ? ConsoleColor.White : ConsoleColor.Blue;
+                    if (isSelected)
+                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+
+                    Console.Write(displayText);
+                    Console.ResetColor();
+                    suggestionLineWidth += displayText.Length;
                 }
-                Console.ResetColor();
                 Console.WriteLine();
                 Console.Write(input);
 
